@@ -1,0 +1,52 @@
+import React from 'react';
+
+const Footer: React.FC = () => {
+  return (
+    <footer className="bg-gray-800 text-white py-8 mt-8">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <h3 className="text-lg font-semibold mb-4">CelcomDigi</h3>
+            <div className="flex space-x-4 mb-4">
+              {/* Simplified social icons */}
+              <a href="https://web.facebook.com/CelcomDigi" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Facebook</a>
+              <a href="https://www.instagram.com/celcomdigi/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Instagram</a>
+              <a href="https://twitter.com/CelcomDigi" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Twitter</a>
+            </div>
+            <h4 className="text-md font-semibold mb-2">Download the Celcom Life Hub or MyDigi app</h4>
+            <div className="flex space-x-2">
+              {/* Simplified app store icons */}
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/6551e76ef1d0bd1c0c55bea6_Apple_Icon.svg" alt="Apple App Store" className="h-8" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/6551e76e2606af8e05a9fd61_Google-play-store_Icon.svg" alt="Google Play Store" className="h-8" />
+            </div>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">About CelcomDigi</h3>
+            <ul className="space-y-2">
+              <li><a href="https://corporate.celcomdigi.com/company/about-us" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">About Us</a></li>
+              <li><a href="https://celcomdigi.listedcompany.com/home.html" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Investor Relations</a></li>
+              <li><a href="https://corporate.celcomdigi.com/newsroom" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Newsroom</a></li>
+              <li><a href="https://corporate.celcomdigi.com/network/our-network" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Network</a></li>
+              <li><a href="https://corporate.celcomdigi.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">CelcomDigi Corporate</a></li>
+              <li><a href="https://business.celcomdigi.com/" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">CelcomDigi Business</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-lg font-semibold mb-4">Resources</h3>
+            <ul className="space-y-2">
+              <li><a href="https://help.celcomdigi.com/support/solutions/folders/70000485592" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">MCMC Notifications</a></li>
+              <li><a href="/terms-and-conditions" className="hover:text-gray-400">Terms &amp; Conditions</a></li>
+              <li><a href="https://assets.website-files.com/639b20bcbc27667faa23c543/639b20bcbc2766103223c5aa_Cookie%20Notice%20(CelcomDigi).pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Cookie Notice</a></li>
+              <li>Privacy Notice: <a href="/privacy-notice" className="hover:text-gray-400">CelcomDigi</a> | <a href="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/6711d56afec81dd3a8ebbbef_Celcom%20Privacy%20Notice%20181024.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Celcom</a> | <a href="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/6711d56a85f3e50b53009bec_Digi%20Privacy%20Notice%20181024.pdf" target="_blank" rel="noopener noreferrer" className="hover:text-gray-400">Digi</a></li>
+            </ul>
+          </div>
+        </div>
+        <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
+          <p>© Copyright 2025 CelcomDigi Berhad [Registration No. 199701009694 (425190-X)]. All Rights Reserved.</p>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+export default Footer;

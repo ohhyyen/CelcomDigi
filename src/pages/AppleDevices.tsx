@@ -28,18 +28,9 @@ const AppleDevicesPage: React.FC = () => {
               <h4 className="text-xl font-semibold mb-2">Plans made for your iPhone</h4>
               <p className="text-sm">Powered by our premium 5G &amp; 4G Internet plans</p>
             </Link>
-            <a href="https://shop.celcomdigi.com/home" target="_blank" rel="noopener noreferrer" className="block p-6 rounded-lg shadow-lg bg-gradient-to-br from-purple-500 to-purple-700 text-white hover:shadow-xl transition-shadow">
-              <h4 className="text-xl font-semibold mb-2">Complete Apple ecosystem</h4>
-              <p className="text-sm">Own the iPad and Apple Watch without any contract</p>
-            </a>
-            <a href="/lifestyle/pay-via-celcomdigi#how-to-setup-direct-billing" className="block p-6 rounded-lg shadow-lg bg-gradient-to-br from-green-500 to-green-700 text-white hover:shadow-xl transition-shadow">
-              <h4 className="text-xl font-semibold mb-2">Easy App Store subscriptions</h4>
-              <p className="text-sm">Manage Apple Music, Apple TV+, and more in a single postpaid bill</p>
-            </a>
-            <Link to="/postpaid/watchsim" className="block p-6 rounded-lg shadow-lg bg-gradient-to-br from-red-500 to-red-700 text-white hover:shadow-xl transition-shadow">
-              <h4 className="text-xl font-semibold mb-2">Stay connected with WatchSIM</h4>
-              <p className="text-sm">Make calls, send messages, stream music, and pay from your Apple Watch</p>
-            </Link>
+            {/* Removed: Complete Apple ecosystem */}
+            {/* Removed: Easy App Store subscriptions */}
+            {/* Removed: Stay connected with WatchSIM */}
           </div>
         </div>
       </section>

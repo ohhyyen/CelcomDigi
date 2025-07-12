@@ -74,17 +74,7 @@ const AppleDevicesPage: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif" alt="iPhone 16 Pro Max" className="mx-auto mb-4 w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16 Pro Max</h5>
-              <div className="text-sm text-gray-500 mb-4">RRP: RM5,999</div>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex justify-around text-sm mb-2">
-                  <div>24 bulan</div>
-                  <div>36 bulan</div>
-                </div>
-                <div className="flex justify-around items-center">
-                  <div className="text-lg font-bold">Dari RM182</div>
-                  <div className="text-lg font-bold">Dari RM114</div>
-                </div>
-              </div>
+              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
@@ -92,17 +82,7 @@ const AppleDevicesPage: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee428f6c2ccb7da97d60_CelcomDigi_iPhone-16-Pro-Max_Device-Image.avif" alt="iPhone 16 Pro" className="mx-auto mb-4 w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16 Pro</h5>
-              <div className="text-sm text-gray-500 mb-4">RRP: RM4,999</div>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex justify-around text-sm mb-2">
-                  <div>24 bulan</div>
-                  <div>36 bulan</div>
-                </div>
-                <div className="flex justify-around items-center">
-                  <div className="text-lg font-bold">Dari RM143</div>
-                  <div className="text-lg font-bold">Dari RM88</div>
-                </div>
-              </div>
+              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
@@ -110,17 +90,7 @@ const AppleDevicesPage: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e2613e9aff0f9a20c4ca03_CelcomDigi_iPhone-16-Pink_Device-Image.avif" alt="iPhone 16" className="mx-auto mb-4 w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16</h5>
-              <div className="text-sm text-gray-500 mb-4">RRP: RM3,999</div>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex justify-around text-sm mb-2">
-                  <div>24 bulan</div>
-                  <div>36 bulan</div>
-                </div>
-                <div className="flex justify-around items-center">
-                  <div className="text-lg font-bold">Dari RM113</div>
-                  <div className="text-lg font-bold">Dari RM68</div>
-                </div>
-              </div>
+              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
@@ -128,17 +98,7 @@ const AppleDevicesPage: React.FC = () => {
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
               <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67bfeb741c4477ee5c1a6f7a_CelcomDigi_iPhone16e_device_image.avif" alt="iPhone 16e" className="mx-auto mb-4 w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16e</h5>
-              <div className="text-sm text-gray-500 mb-4">RRP: RM2,999</div>
-              <div className="border-t border-gray-200 pt-4">
-                <div className="flex justify-around text-sm mb-2">
-                  <div>24 bulan</div>
-                  <div>36 bulan</div>
-                </div>
-                <div className="flex justify-around items-center">
-                  <div className="text-lg font-bold">Dari RM91</div>
-                  <div className="text-lg font-bold">Dari RM53</div>
-                </div>
-              </div>
+              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
           </div>

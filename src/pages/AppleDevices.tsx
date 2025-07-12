@@ -9,10 +9,7 @@ const AppleDevicesPage: React.FC = () => {
         <div className="container mx-auto text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
           <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
-          {/* Placeholder for video background */}
-          <div className="absolute inset-0 z-0 opacity-20">
-            <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b%2F67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN%20%281%29-poster-00001.jpg" alt="Poster video iPhone 16e" className="w-full h-full object-cover" />
-          </div>
+          {/* Placeholder for video background - REMOVED */}
         </div>
       </section>
 

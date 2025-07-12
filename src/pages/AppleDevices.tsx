@@ -12,9 +12,8 @@ const AppleDevicesPage: React.FC = () => {
           console.log("Video started playing automatically.");
         })
         .catch(error => {
-          // Ini sering berarti browser memblokir pemutaran otomatis
           console.error("Video autoplay failed:", error.name, error.message);
-          console.log("Kemungkinan besar, browser memblokir pemutaran otomatis karena kebijakannya. Interaksi pengguna mungkin diperlukan.");
+          console.log("Kemungkinan besar, browser memblokir pemutaran otomatis karena kebijakannya atau masalah format. Interaksi pengguna mungkin diperlukan.");
         });
     }
   }, []);
@@ -29,12 +28,14 @@ const AppleDevicesPage: React.FC = () => {
           <video
             ref={videoRef}
             className="w-full h-auto mt-8 rounded-lg shadow-lg"
-            src={iPhoneVideo}
             autoPlay
             loop
             muted
             playsInline
-          />
+          >
+            <source src={iPhoneVideo} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </section>
 

@@ -64,7 +64,7 @@ const AppleDevicesPage: React.FC = () => {
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">Dapatkan pelan ansuran iPhone 16 terbaik di Malaysia dengan Easy360</h2>
-            <p className="text-lg text-gray-600">Cara termudah untuk memiliki iPhone 16 — dari RM53/bulan dengan RM0 pendahuluan, 0% faedah</p>
+            {/* Removed: <p className="text-lg text-gray-600">Cara termudah untuk memiliki iPhone 16 — dari RM53/bulan dengan RM0 pendahuluan, 0% faedah</p> */}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Device Card 1 */}
@@ -127,7 +127,7 @@ const AppleDevicesPage: React.FC = () => {
               <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66ec1b6669aeff25ffb5fd1f_CelcomDigi_PWP_Campaign%20Banner_EN_990x557.avif" alt="Pembelian dengan Pembelian" className="w-full h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2"><strong>Pembelian dengan Pembelian</strong></h3>
-                <p className="text-gray-600">Jimat sehingga 45% untuk bundle aksesori siri iPhone 16</p>
+                <p className="text-600">Jimat sehingga 45% untuk bundle aksesori siri iPhone 16</p>
               </div>
             </a>
             {/* Promo Banner 2 */}

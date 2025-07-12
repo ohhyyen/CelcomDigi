@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import iPhonePromotionList from './iPhonePromotionList';
+import iPhonePromotionList from './iPhonePromotionList'; // Memastikan jalur impor sudah benar
 import {
   Dialog,
   DialogContent,

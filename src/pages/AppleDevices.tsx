@@ -1,7 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-// Tidak perlu mengimpor video lagi karena akan diakses dari folder public
-// import iPhoneVideo from '../assets/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4';
+import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker'; // Import komponen baru
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -56,6 +55,13 @@ const AppleDevicesPage: React.FC = () => {
             {/* Removed: Easy App Store subscriptions */}
             {/* Removed: Stay connected with WatchSIM */}
           </div>
+        </div>
+      </section>
+
+      {/* New Postpaid Promotion Checker Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-4">
+          <PostpaidPromotionChecker />
         </div>
       </section>
 

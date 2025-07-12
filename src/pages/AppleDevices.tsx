@@ -1,15 +1,26 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import iPhoneVideo from '../assets/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4';
 
 const AppleDevicesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-white text-gray-800 py-20 overflow-hidden">
-        <div className="container mx-auto text-center px-4">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0 z-0">
+          <video
+            className="w-full h-full object-cover"
+            src={iPhoneVideo}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
+          <div className="absolute inset-0 bg-black opacity-50"></div> {/* Lapisan gelap */}
+        </div>
+        <div className="container mx-auto text-center px-4 relative z-10 text-white"> {/* Teks di atas lapisan gelap */}
           <h1 className="text-4xl md:text-5xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
           <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
-          {/* Placeholder for video background - REMOVED */}
         </div>
       </section>
 

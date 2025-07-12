@@ -5,7 +5,7 @@ const AppleDevicesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-r from-blue-700 to-blue-900 text-white py-20 overflow-hidden">
+      <section className="relative bg-white text-gray-800 py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
           <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>

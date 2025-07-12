@@ -47,10 +47,7 @@ const AppleDevicesPage: React.FC = () => {
             <p className="text-lg text-gray-600">Temui rangkaian perkhidmatan iPhone kami yang disesuaikan untuk anda</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Link to="/postpaid" className="block p-6 rounded-lg shadow-lg bg-gradient-to-br from-blue-500 to-blue-700 text-white hover:shadow-xl transition-shadow">
-              <h4 className="text-xl font-semibold mb-2">Pelan yang dibuat untuk iPhone anda</h4>
-              <p className="text-sm">Dikuasakan oleh pelan Internet 5G &amp; 4G premium kami</p>
-            </Link>
+            {/* Removed: Pelan yang dibuat untuk iPhone anda */}
             {/* Removed: Complete Apple ecosystem */}
             {/* Removed: Easy App Store subscriptions */}
             {/* Removed: Stay connected with WatchSIM */}

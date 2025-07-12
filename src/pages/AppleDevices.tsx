@@ -17,6 +17,7 @@ const AppleDevicesPage: React.FC = () => {
             loop
             muted
             playsInline
+            preload="auto"
           />
         </div>
       </section>

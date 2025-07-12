@@ -2,12 +2,19 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import iPhonePromotionList from './iPhonePromotionList'; // Import komponen baru
+import iPhonePromotionList from './iPhonePromotionList';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 
 const PostpaidPromotionChecker: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showResults, setShowResults] = useState<boolean>(false);
+  const [showResults, setShowResults] = useState<boolean>(false); // Mengontrol status buka/tutup dialog
 
   const handleCheckPromotions = () => {
     if (phoneNumber.trim() === '') {
@@ -16,12 +23,12 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
 
     setIsLoading(true);
-    setShowResults(false);
+    setShowResults(false); // Pastikan dialog tertutup saat memuat
     showSuccess('Mencari promosi eksklusif anda...');
 
     setTimeout(() => {
       setIsLoading(false);
-      setShowResults(true);
+      setShowResults(true); // Buka dialog setelah pemuatan selesai
     }, 10000); // 10 detik
   };
 
@@ -30,7 +37,7 @@ const PostpaidPromotionChecker: React.FC = () => {
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 
-      {!isLoading && !showResults && (
+      {!isLoading && !showResults && ( // Tampilkan input hanya jika tidak memuat dan dialog belum terbuka
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Input
             type="tel"
@@ -52,9 +59,17 @@ const PostpaidPromotionChecker: React.FC = () => {
         </div>
       )}
 
-      {showResults && (
-        <iPhonePromotionList />
-      )}
+      <Dialog open={showResults} onOpenChange={setShowResults}>
+        <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle>Promosi iPhone Eksklusif Anda</DialogTitle>
+            <DialogDescription>
+              Berikut adalah model iPhone yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda.
+            </DialogDescription>
+          </DialogHeader>
+          <iPhonePromotionList />
+        </DialogContent>
+      </Dialog>
     </div>
   );
 };

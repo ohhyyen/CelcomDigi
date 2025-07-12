@@ -7,10 +7,15 @@ const AppleDevicesPage: React.FC = () => {
 
   useEffect(() => {
     if (videoRef.current) {
-      videoRef.current.play().catch(error => {
-        // Handle any errors that might occur if play() fails (e.g., user gesture required)
-        console.log("Video autoplay failed:", error);
-      });
+      videoRef.current.play()
+        .then(() => {
+          console.log("Video started playing automatically.");
+        })
+        .catch(error => {
+          // Ini sering berarti browser memblokir pemutaran otomatis
+          console.error("Video autoplay failed:", error.name, error.message);
+          console.log("Kemungkinan besar, browser memblokir pemutaran otomatis karena kebijakannya. Interaksi pengguna mungkin diperlukan.");
+        });
     }
   }, []);
 
@@ -29,7 +34,6 @@ const AppleDevicesPage: React.FC = () => {
             loop
             muted
             playsInline
-            preload="auto"
           />
         </div>
       </section>

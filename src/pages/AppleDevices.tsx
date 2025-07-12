@@ -36,6 +36,10 @@ const AppleDevicesPage: React.FC = () => {
             <source src="/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
+          {/* New Postpaid Promotion Checker Section - Moved here */}
+          <div className="mt-12"> {/* Added margin-top for spacing */}
+            <PostpaidPromotionChecker />
+          </div>
         </div>
       </section>
 
@@ -52,13 +56,6 @@ const AppleDevicesPage: React.FC = () => {
             {/* Removed: Easy App Store subscriptions */}
             {/* Removed: Stay connected with WatchSIM */}
           </div>
-        </div>
-      </section>
-
-      {/* New Postpaid Promotion Checker Section */}
-      <section className="py-16 bg-gray-100">
-        <div className="container mx-auto px-4">
-          <PostpaidPromotionChecker />
         </div>
       </section>
 

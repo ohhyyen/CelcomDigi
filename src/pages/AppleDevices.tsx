@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import iPhoneVideo from '../assets/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4';
+// Tidak perlu mengimpor video lagi karena akan diakses dari folder public
+// import iPhoneVideo from '../assets/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4';
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -33,7 +34,7 @@ const AppleDevicesPage: React.FC = () => {
             muted
             playsInline
           >
-            <source src={iPhoneVideo} type="video/mp4" />
+            <source src="/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
         </div>

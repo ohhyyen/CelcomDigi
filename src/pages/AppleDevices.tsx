@@ -1,8 +1,19 @@
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import iPhoneVideo from '../assets/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4';
 
 const AppleDevicesPage: React.FC = () => {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(error => {
+        // Handle any errors that might occur if play() fails (e.g., user gesture required)
+        console.log("Video autoplay failed:", error);
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -11,6 +22,7 @@ const AppleDevicesPage: React.FC = () => {
           <h1 className="text-4xl md:text-5xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
           <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
           <video
+            ref={videoRef}
             className="w-full h-auto mt-8 rounded-lg shadow-lg"
             src={iPhoneVideo}
             autoPlay

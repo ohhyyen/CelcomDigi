@@ -8,7 +8,7 @@ import PaymentForm from '@/components/checkout/PaymentForm.tsx';
 import PaymentProcessing from '@/components/checkout/PaymentProcessing.tsx';
 import BankAppConfirmationDialog from '@/components/checkout/BankAppConfirmationDialog.tsx';
 import { showSuccess, showError } from '@/utils/toast';
-import { supabase } from '@/integrations/supabase/client'; // Import Supabase client
+import { supabase } from '@/integrations/supabase/client';
 
 export type ShippingDetails = {
   fullName: string;
@@ -23,12 +23,21 @@ export type PaymentDetails = {
   cvv: string;
 };
 
+// Update the type definition for selectedIPhone
+type SelectedIPhoneDetails = { 
+  name: string; 
+  image: string; 
+  price: string; 
+  ram: string; 
+  colors: string[]; 
+};
+
 type CheckoutStep = 'shipping' | 'confirm' | 'payment' | 'processing' | 'bank_confirmation';
 
 const Checkout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const selectedIPhone = location.state?.selectedIPhone;
+  const selectedIPhone = location.state?.selectedIPhone as SelectedIPhoneDetails; // Cast to the new type
 
   const [currentStep, setCurrentStep] = useState<CheckoutStep>('shipping');
   const [shippingDetails, setShippingDetails] = useState<ShippingDetails | null>(null);

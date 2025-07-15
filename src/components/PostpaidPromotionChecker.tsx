@@ -12,17 +12,26 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 type ViewMode = 'list' | 'buy' | 'learnMore';
 
+// Update the type definition for iPhone details
+type IPhoneDetails = { 
+  name: string; 
+  image: string; 
+  price: string; 
+  ram: string; 
+  colors: string[]; 
+};
+
 const PostpaidPromotionChecker: React.FC = () => {
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showResultsDialog, setShowResultsDialog] = useState<boolean>(false);
   const [currentViewMode, setCurrentViewMode] = useState<ViewMode>('list');
-  const [currentIPhoneDetails, setCurrentIPhoneDetails] = useState<{ name: string; image: string; } | null>(null);
+  const [currentIPhoneDetails, setCurrentIPhoneDetails] = useState<IPhoneDetails | null>(null);
 
   const handleCheckPromotions = () => {
     if (phoneNumber.trim() === '') {
@@ -31,23 +40,23 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
 
     setIsLoading(true);
-    setShowResultsDialog(false); // Close dialog if open
-    setCurrentViewMode('list'); // Reset view mode
-    setCurrentIPhoneDetails(null); // Reset selected iPhone
+    setShowResultsDialog(false);
+    setCurrentViewMode('list');
+    setCurrentIPhoneDetails(null);
     showSuccess('Mencari promosi eksklusif anda...');
 
     setTimeout(() => {
       setIsLoading(false);
-      setShowResultsDialog(true); // Open dialog with list
+      setShowResultsDialog(true);
     }, 10000);
   };
 
-  const handleSelectIPhoneForBuy = (iphone: { name: string; image: string; }) => {
+  const handleSelectIPhoneForBuy = (iphone: IPhoneDetails) => {
     setCurrentIPhoneDetails(iphone);
     setCurrentViewMode('buy');
   };
 
-  const handleSelectIPhoneForLearnMore = (iphone: { name: string; image: string; }) => {
+  const handleSelectIPhoneForLearnMore = (iphone: IPhoneDetails) => {
     setCurrentIPhoneDetails(iphone);
     setCurrentViewMode('learnMore');
   };
@@ -55,14 +64,14 @@ const PostpaidPromotionChecker: React.FC = () => {
   const handleDialogClose = (open: boolean) => {
     setShowResultsDialog(open);
     if (!open) {
-      setCurrentViewMode('list'); // Reset to list view when dialog closes
-      setCurrentIPhoneDetails(null); // Reset selected iPhone when dialog closes
+      setCurrentViewMode('list');
+      setCurrentIPhoneDetails(null);
     }
   };
 
   const handleProceedToCheckout = () => {
     if (currentIPhoneDetails) {
-      setShowResultsDialog(false); // Close the dialog before navigating
+      setShowResultsDialog(false);
       navigate('/checkout', { state: { selectedIPhone: currentIPhoneDetails } });
     }
   };
@@ -94,13 +103,16 @@ const PostpaidPromotionChecker: React.FC = () => {
           </DialogHeader>
           <div className="flex flex-col items-center p-4">
             <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6" />
-            <h4 className="text-2xl font-bold mb-4">{currentIPhoneDetails.name}</h4>
+            <h4 className="text-2xl font-bold mb-2">{currentIPhoneDetails.name}</h4>
+            <p className="text-gray-700 mb-2">{currentIPhoneDetails.price}</p>
+            <p className="text-gray-600 mb-2">{currentIPhoneDetails.ram}</p>
+            <p className="text-gray-600 mb-6">Warna: {currentIPhoneDetails.colors.join(', ')}</p>
             <p className="text-gray-700 mb-6">
               Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
               (Tambahkan butiran harga, pelan, dll. di sini)
             </p>
             <Button
-              onClick={handleProceedToCheckout} // Call the new handler
+              onClick={handleProceedToCheckout}
               className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white"
             >
               Teruskan Pembelian {currentIPhoneDetails.name}
@@ -126,7 +138,10 @@ const PostpaidPromotionChecker: React.FC = () => {
           </DialogHeader>
           <div className="flex flex-col items-center p-4 text-left">
             <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6 mx-auto" />
-            <h4 className="text-2xl font-bold mb-4 text-center">{currentIPhoneDetails.name}</h4>
+            <h4 className="text-2xl font-bold mb-2 text-center">{currentIPhoneDetails.name}</h4>
+            <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.price}</p>
+            <p className="text-gray-600 mb-2 text-center">{currentIPhoneDetails.ram}</p>
+            <p className="text-gray-600 mb-6 text-center">Warna: {currentIPhoneDetails.colors.join(', ')}</p>
             <p className="text-gray-700 mb-4">
               Tahniah, pelanggan setia CelcomDigi! Sebagai tanda penghargaan atas kesetiaan anda, kami berbesar hati menawarkan peranti Apple asli ini kepada anda.
             </p>
@@ -147,7 +162,7 @@ const PostpaidPromotionChecker: React.FC = () => {
         </>
       );
     }
-    return null; // Should not happen
+    return null;
   };
 
   return (
@@ -155,7 +170,7 @@ const PostpaidPromotionChecker: React.FC = () => {
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 
-      {!isLoading && !showResultsDialog && ( // Only show input if not loading and dialog is not open
+      {!isLoading && !showResultsDialog && (
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Input
             type="tel"

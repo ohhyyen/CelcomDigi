@@ -33,7 +33,7 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
           <Button
             variant="outline"
             onClick={() => onLearnMore(iphone)} // Call onLearnMore here
-            className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
+            className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 text-sm" // Added text-sm here
           >
             Ketahui lebih lanjut
           </Button>

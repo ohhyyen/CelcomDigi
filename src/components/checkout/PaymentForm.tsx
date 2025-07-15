@@ -42,9 +42,9 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <h2 className="text-2xl font-semibold mb-4 text-gray-700">Maklumat Pembayaran</h2>
         <div className="flex justify-center space-x-4 mb-6">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/Visa_Inc._logo.svg/2560px-Visa_Inc._logo.svg.png" alt="Visa" className="h-8" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Mastercard-logo.svg/2000px-Mastercard-logo.svg.png" alt="Mastercard" className="h-8" />
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/American_Express_logo.svg/1200px-American_Express_logo.svg.png" alt="Amex" className="h-8" />
+          <img src="/images/payment_logos/visa.png" alt="Visa" className="h-8" />
+          <img src="/images/payment_logos/mastercard.png" alt="Mastercard" className="h-8" />
+          <img src="/images/payment_logos/amex.png" alt="Amex" className="h-8" />
           {/* Add more payment logos as needed */}
         </div>
         <FormField

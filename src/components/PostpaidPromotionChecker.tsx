@@ -1,8 +1,10 @@
+"use client";
+
 import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import iPhonePromotionList from './iPhonePromotionList'; // Memastikan jalur impor sudah benar
+import iPhonePromotionList from './iPhonePromotionList';
 import {
   Dialog,
   DialogContent,
@@ -14,7 +16,7 @@ import {
 const PostpaidPromotionChecker: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showResults, setShowResults] = useState<boolean>(false); // Mengontrol status buka/tutup dialog
+  const [showResults, setShowResults] = useState<boolean>(false);
 
   const handleCheckPromotions = () => {
     if (phoneNumber.trim() === '') {
@@ -23,13 +25,13 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
 
     setIsLoading(true);
-    setShowResults(false); // Pastikan dialog tertutup saat memuat
+    setShowResults(false);
     showSuccess('Mencari promosi eksklusif anda...');
 
     setTimeout(() => {
       setIsLoading(false);
-      setShowResults(true); // Buka dialog setelah pemuatan selesai
-    }, 10000); // 10 detik
+      setShowResults(true);
+    }, 10000);
   };
 
   return (
@@ -37,7 +39,7 @@ const PostpaidPromotionChecker: React.FC = () => {
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 
-      {!isLoading && !showResults && ( // Tampilkan input hanya jika tidak memuat dan dialog belum terbuka
+      {!isLoading && !showResults && (
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Input
             type="tel"

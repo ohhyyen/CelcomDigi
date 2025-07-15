@@ -164,7 +164,7 @@ const PostpaidPromotionChecker: React.FC = () => {
             type="tel"
             placeholder="Contoh: 0191234567"
             value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}
             className="max-w-xs mx-auto sm:mx-0"
           />
           <Button onClick={handleCheckPromotions} className="bg-blue-600 hover:bg-blue-700 text-white">

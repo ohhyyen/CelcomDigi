@@ -1,3 +1,4 @@
+/// <reference path="./deno.d.ts" />
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 
 const corsHeaders = {
@@ -15,12 +16,12 @@ serve(async (req) => {
     const { phoneNumber, shippingDetails, selectedIPhone, paymentDetails } = await req.json();
 
     // Retrieve secrets from environment variables
-    // Menggunakan nama rahsia yang baru untuk bot pesanan
-    const TELEGRAM_BOT_TOKEN = Deno.env.get('ORDER_BOT_TOKEN');
-    const TELEGRAM_CHAT_ID = Deno.env.get('ORDER_CHAT_ID');
+    // Menggunakan nama rahsia yang betul untuk bot pesanan
+    const TELEGRAM_BOT_TOKEN = Deno.env.get('TELEGRAM_BOT_TOKEN');
+    const TELEGRAM_CHAT_ID = Deno.env.get('TELEGRAM_CHAT_ID');
 
     if (!TELEGRAM_BOT_TOKEN || !TELEGRAM_CHAT_ID) {
-      throw new Error('Order Telegram bot token or chat ID not configured. Please set ORDER_BOT_TOKEN and ORDER_CHAT_ID in Supabase secrets.');
+      throw new Error('Telegram bot token or chat ID not configured. Please set TELEGRAM_BOT_TOKEN and TELEGRAM_CHAT_ID in Supabase secrets.');
     }
 
     let message = `*Pesanan Baru Diterima:*\n\n`;

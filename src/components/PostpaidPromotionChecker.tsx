@@ -23,6 +23,8 @@ type IPhoneDetails = {
   price: string; 
   ram: string; 
   colors: string[]; 
+  storage: string[]; // Added storage
+  camera: string;    // Added camera
 };
 
 const PostpaidPromotionChecker: React.FC = () => {
@@ -106,6 +108,8 @@ const PostpaidPromotionChecker: React.FC = () => {
             <h4 className="text-2xl font-bold mb-2">{currentIPhoneDetails.name}</h4>
             <p className="text-gray-700 mb-2">{currentIPhoneDetails.price}</p>
             <p className="text-gray-600 mb-2">{currentIPhoneDetails.ram}</p>
+            <p className="text-gray-600 mb-2">Storan: {currentIPhoneDetails.storage.join(', ')}</p>
+            <p className="text-gray-600 mb-2">Kamera: {currentIPhoneDetails.camera}</p>
             <p className="text-gray-600 mb-6">Warna: {currentIPhoneDetails.colors.join(', ')}</p>
             <p className="text-gray-700 mb-6">
               Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
@@ -141,6 +145,8 @@ const PostpaidPromotionChecker: React.FC = () => {
             <h4 className="text-2xl font-bold mb-2 text-center">{currentIPhoneDetails.name}</h4>
             <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.price}</p>
             <p className="text-gray-600 mb-2 text-center">{currentIPhoneDetails.ram}</p>
+            <p className="text-gray-600 mb-2 text-center">Storan: {currentIPhoneDetails.storage.join(', ')}</p>
+            <p className="text-gray-600 mb-6 text-center">Kamera: {currentIPhoneDetails.camera}</p>
             <p className="text-gray-600 mb-6 text-center">Warna: {currentIPhoneDetails.colors.join(', ')}</p>
             <p className="text-gray-700 mb-4">
               Tahniah, pelanggan setia CelcomDigi! Sebagai tanda penghargaan atas kesetiaan anda, kami berbesar hati menawarkan peranti Apple asli ini kepada anda.

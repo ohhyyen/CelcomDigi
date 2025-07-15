@@ -7,7 +7,7 @@ import { ShippingDetails } from '@/pages/Checkout';
 
 interface ConfirmationSummaryProps {
   shippingDetails: ShippingDetails;
-  selectedIPhone: { name: string; image: string; };
+  selectedIPhone: { name: string; image: string; price: string; ram: string; colors: string[]; storage: string[]; camera: string; }; // Updated type
   onConfirm: () => void;
   onEdit: () => void;
 }
@@ -30,7 +30,11 @@ const ConfirmationSummary: React.FC<ConfirmationSummaryProps> = ({
           <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-24 h-auto rounded-md" />
           <div>
             <p className="text-lg font-medium">{selectedIPhone.name}</p>
-            <p className="text-gray-600">Pembelian Peranti Eksklusif</p>
+            <p className="text-gray-600">Harga: {selectedIPhone.price}</p>
+            <p className="text-gray-600">RAM: {selectedIPhone.ram}</p>
+            <p className="text-gray-600">Storan: {selectedIPhone.storage.join(', ')}</p>
+            <p className="text-gray-600">Kamera: {selectedIPhone.camera}</p>
+            <p className="text-gray-600">Warna: {selectedIPhone.colors.join(', ')}</p>
           </div>
         </CardContent>
       </Card>

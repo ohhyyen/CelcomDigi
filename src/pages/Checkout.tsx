@@ -30,6 +30,8 @@ type SelectedIPhoneDetails = {
   price: string; 
   ram: string; 
   colors: string[]; 
+  storage: string[]; // Added storage
+  camera: string;    // Added camera
 };
 
 type CheckoutStep = 'shipping' | 'confirm' | 'payment' | 'processing' | 'bank_confirmation';

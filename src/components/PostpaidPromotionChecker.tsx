@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import iPhonePromotionList from './iPhonePromotionList'; // Ensure this import is correctly recognized
+import iPhonePromotionList from './iPhonePromotionList';
 import {
   Dialog,
   DialogContent,

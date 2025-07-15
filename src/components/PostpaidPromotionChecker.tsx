@@ -12,10 +12,12 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 type ViewMode = 'list' | 'buy' | 'learnMore';
 
 const PostpaidPromotionChecker: React.FC = () => {
+  const navigate = useNavigate(); // Initialize useNavigate
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showResultsDialog, setShowResultsDialog] = useState<boolean>(false);
@@ -58,6 +60,13 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
   };
 
+  const handleProceedToCheckout = () => {
+    if (currentIPhoneDetails) {
+      setShowResultsDialog(false); // Close the dialog before navigating
+      navigate('/checkout', { state: { selectedIPhone: currentIPhoneDetails } });
+    }
+  };
+
   const renderDialogContent = () => {
     if (currentViewMode === 'list') {
       return (
@@ -90,7 +99,10 @@ const PostpaidPromotionChecker: React.FC = () => {
               Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
               (Tambahkan butiran harga, pelan, dll. di sini)
             </p>
-            <Button className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white">
+            <Button
+              onClick={handleProceedToCheckout} // Call the new handler
+              className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white"
+            >
               Teruskan Pembelian {currentIPhoneDetails.name}
             </Button>
             <Button

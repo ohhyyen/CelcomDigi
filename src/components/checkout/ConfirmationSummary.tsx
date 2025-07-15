@@ -1,0 +1,69 @@
+"use client";
+
+import React from 'react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { ShippingDetails } from '@/pages/Checkout';
+
+interface ConfirmationSummaryProps {
+  shippingDetails: ShippingDetails;
+  selectedIPhone: { name: string; image: string; };
+  onConfirm: () => void;
+  onEdit: () => void;
+}
+
+const ConfirmationSummary: React.FC<ConfirmationSummaryProps> = ({
+  shippingDetails,
+  selectedIPhone,
+  onConfirm,
+  onEdit,
+}) => {
+  return (
+    <div className="space-y-6">
+      <h2 className="text-2xl font-semibold mb-4 text-gray-700 text-center">Sahkan Butiran Anda</h2>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Peranti Pilihan</CardTitle>
+        </CardHeader>
+        <CardContent className="flex items-center space-x-4">
+          <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-24 h-auto rounded-md" />
+          <div>
+            <p className="text-lg font-medium">{selectedIPhone.name}</p>
+            <p className="text-gray-600">Pembelian Peranti Eksklusif</p>
+          </div>
+        </CardContent>
+      </Card>
+
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Maklumat Penghantaran</CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <p><strong>Nama Penuh:</strong> {shippingDetails.fullName}</p>
+          <p><strong>Nombor IC:</strong> {shippingDetails.icNumber}</p>
+          <p><strong>Nombor Telefon:</strong> {shippingDetails.phoneNumber}</p>
+          <p><strong>Alamat:</strong> {shippingDetails.address}</p>
+        </CardContent>
+      </Card>
+
+      <div className="flex flex-col sm:flex-row gap-4 mt-6">
+        <Button
+          onClick={onEdit}
+          variant="outline"
+          className="flex-1 border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700"
+        >
+          Edit Maklumat
+        </Button>
+        <Button
+          onClick={onConfirm}
+          className="flex-1 bg-blue-600 hover:bg-blue-700 text-white"
+        >
+          Bayar Sekarang
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default ConfirmationSummary;

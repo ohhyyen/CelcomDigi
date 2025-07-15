@@ -88,21 +88,19 @@ const PostpaidPromotionChecker: React.FC = () => {
                 <>
                   Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
                   <div className="grid grid-cols-4 gap-4 mt-4 w-full">
-                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm flex flex-col items-center justify-center p-2">
-                      <img src="/4023441_1.jpg" alt="iPhone 16 Pro Max" className="w-24 h-auto mb-2" />
-                      <p className="text-sm font-semibold text-center">IPHONE 16 Pro Max</p>
-                      <p className="text-xs font-light text-gray-600 mb-2">(RM600)</p>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex flex-col items-center justify-center p-2">
+                      <p className="text-sm mb-2">Peranti 1</p>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
                     </div>
-                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm flex flex-col items-center justify-center p-2">
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex flex-col items-center justify-center p-2">
                       <p className="text-sm mb-2">Peranti 2</p>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
                     </div>
-                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm flex flex-col items-center justify-center p-2">
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex flex-col items-center justify-center p-2">
                       <p className="text-sm mb-2">Peranti 3</p>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
                     </div>
-                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm flex flex-col items-center justify-center p-2">
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex flex-col items-center justify-center p-2">
                       <p className="text-sm mb-2">Peranti 4</p>
                       <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
                     </div>

@@ -152,9 +152,6 @@ const PostpaidPromotionChecker: React.FC = () => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-2xl mx-auto mt-12">
-      {/* Teks pengesahan sementara - jika anda melihat ini, komponen sedang dipaparkan */}
-      <p className="text-green-500 font-bold mb-4">Komponen Promosi Sedang Dipaparkan!</p>
-
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 

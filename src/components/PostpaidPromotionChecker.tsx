@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import IPhonePromoCards from './IPhonePromoCards'; // Import yang betul
+import IPhonePromoCards from './IPhonePromoCards';
 import {
   Dialog,
   DialogContent,
@@ -50,6 +50,9 @@ const PostpaidPromotionChecker: React.FC = () => {
 
   return (
     <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-2xl mx-auto mt-12">
+      {/* Teks pengesahan sementara - jika anda melihat ini, komponen sedang dipaparkan */}
+      <p className="text-green-500 font-bold mb-4">Komponen Promosi Sedang Dipaparkan!</p>
+
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 
@@ -112,6 +115,7 @@ const PostpaidPromotionChecker: React.FC = () => {
             <>
               <div className="grid grid-cols-4 gap-4 mt-4 w-full">
                 <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-between">
+                  {/* Pastikan gambar ini ada di folder 'public' */}
                   <img src="/4023441_1.jpg" alt="iPhone 16 Pro Max" className="w-24 h-24 object-contain mb-2" />
                   <p className="text-base font-semibold text-gray-800 text-center">IPHONE 16 Pro Max</p>
                   <p className="text-sm font-light text-gray-600 text-center">(RM600)</p>

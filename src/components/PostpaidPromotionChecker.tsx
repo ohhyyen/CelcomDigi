@@ -13,11 +13,14 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog";
 
+type ViewMode = 'list' | 'buy' | 'learnMore';
+
 const PostpaidPromotionChecker: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [showResults, setShowResults] = useState<boolean>(false);
-  const [selectedIPhone, setSelectedIPhone] = useState<{ name: string; image: string; } | null>(null);
+  const [showResultsDialog, setShowResultsDialog] = useState<boolean>(false);
+  const [currentViewMode, setCurrentViewMode] = useState<ViewMode>('list');
+  const [currentIPhoneDetails, setCurrentIPhoneDetails] = useState<{ name: string; image: string; } | null>(null);
 
   const handleCheckPromotions = () => {
     if (phoneNumber.trim() === '') {
@@ -26,26 +29,113 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
 
     setIsLoading(true);
-    setShowResults(false); // Close dialog if open
-    setSelectedIPhone(null); // Reset selected iPhone
+    setShowResultsDialog(false); // Close dialog if open
+    setCurrentViewMode('list'); // Reset view mode
+    setCurrentIPhoneDetails(null); // Reset selected iPhone
     showSuccess('Mencari promosi eksklusif anda...');
 
     setTimeout(() => {
       setIsLoading(false);
-      setShowResults(true); // Open dialog with list
+      setShowResultsDialog(true); // Open dialog with list
     }, 10000);
   };
 
-  const handleSelectIPhone = (iphone: { name: string; image: string; }) => {
-    setSelectedIPhone(iphone);
-    // Dialog is already open, just change content
+  const handleSelectIPhoneForBuy = (iphone: { name: string; image: string; }) => {
+    setCurrentIPhoneDetails(iphone);
+    setCurrentViewMode('buy');
+  };
+
+  const handleSelectIPhoneForLearnMore = (iphone: { name: string; image: string; }) => {
+    setCurrentIPhoneDetails(iphone);
+    setCurrentViewMode('learnMore');
   };
 
   const handleDialogClose = (open: boolean) => {
-    setShowResults(open);
+    setShowResultsDialog(open);
     if (!open) {
-      setSelectedIPhone(null); // Reset selected iPhone when dialog closes
+      setCurrentViewMode('list'); // Reset to list view when dialog closes
+      setCurrentIPhoneDetails(null); // Reset selected iPhone when dialog closes
     }
+  };
+
+  const renderDialogContent = () => {
+    if (currentViewMode === 'list') {
+      return (
+        <>
+          <DialogHeader>
+            <DialogTitle>Promosi iPhone Eksklusif Anda</DialogTitle>
+            <DialogDescription>
+              Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
+            </DialogDescription>
+          </DialogHeader>
+          <IPhonePromoCards
+            onSelectIPhone={handleSelectIPhoneForBuy}
+            onLearnMore={handleSelectIPhoneForLearnMore}
+          />
+        </>
+      );
+    } else if (currentViewMode === 'buy' && currentIPhoneDetails) {
+      return (
+        <>
+          <DialogHeader>
+            <DialogTitle>Butiran {currentIPhoneDetails.name}</DialogTitle>
+            <DialogDescription>
+              Ini adalah butiran untuk {currentIPhoneDetails.name}.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center p-4">
+            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6" />
+            <h4 className="text-2xl font-bold mb-4">{currentIPhoneDetails.name}</h4>
+            <p className="text-gray-700 mb-6">
+              Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
+              (Tambahkan butiran harga, pelan, dll. di sini)
+            </p>
+            <Button className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white">
+              Teruskan Pembelian {currentIPhoneDetails.name}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setCurrentViewMode('list')}
+              className="mt-4 w-full max-w-xs"
+            >
+              Kembali ke Senarai
+            </Button>
+          </div>
+        </>
+      );
+    } else if (currentViewMode === 'learnMore' && currentIPhoneDetails) {
+      return (
+        <>
+          <DialogHeader>
+            <DialogTitle>Mengenai Tawaran {currentIPhoneDetails.name}</DialogTitle>
+            <DialogDescription>
+              Penerangan terperinci mengenai tawaran peranti ini.
+            </DialogDescription>
+          </DialogHeader>
+          <div className="flex flex-col items-center p-4 text-left">
+            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6 mx-auto" />
+            <h4 className="text-2xl font-bold mb-4 text-center">{currentIPhoneDetails.name}</h4>
+            <p className="text-gray-700 mb-4">
+              Tahniah, pelanggan setia CelcomDigi! Sebagai tanda penghargaan atas kesetiaan anda, kami berbesar hati menawarkan peranti Apple asli ini kepada anda.
+            </p>
+            <p className="text-gray-700 mb-4">
+              Anda tidak perlu melanggan pelan pascabayar baharu atau bimbang tentang sebarang caj tersembunyi.
+            </p>
+            <p className="text-gray-700 mb-6">
+              Peranti pilihan anda akan dihantar terus ke alamat yang anda berikan, tanpa sebarang kos tambahan. Nikmati pengalaman Apple terbaik dengan CelcomDigi!
+            </p>
+            <Button
+              variant="outline"
+              onClick={() => setCurrentViewMode('list')}
+              className="mt-4 w-full max-w-xs"
+            >
+              Kembali ke Senarai
+            </Button>
+          </div>
+        </>
+      );
+    }
+    return null; // Should not happen
   };
 
   return (
@@ -56,7 +146,7 @@ const PostpaidPromotionChecker: React.FC = () => {
       <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
       <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
 
-      {!isLoading && !showResults && (
+      {!isLoading && !showResultsDialog && ( // Only show input if not loading and dialog is not open
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Input
             type="tel"
@@ -78,45 +168,9 @@ const PostpaidPromotionChecker: React.FC = () => {
         </div>
       )}
 
-      <Dialog open={showResults} onOpenChange={handleDialogClose}>
+      <Dialog open={showResultsDialog} onOpenChange={handleDialogClose}>
         <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle>
-              {selectedIPhone ? `Butiran ${selectedIPhone.name}` : 'Promosi iPhone Eksklusif Anda'}
-            </DialogTitle>
-            <DialogDescription>
-              {selectedIPhone ? (
-                `Ini adalah butiran untuk ${selectedIPhone.name}.`
-              ) : (
-                `Tahniah untuk nombor ${phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.`
-              )}
-            </DialogDescription>
-          </DialogHeader>
-          {selectedIPhone ? (
-            <div className="flex flex-col items-center p-4">
-              <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-48 h-auto mb-6" />
-              <h4 className="text-2xl font-bold mb-4">{selectedIPhone.name}</h4>
-              <p className="text-gray-700 mb-6">
-                Dapatkan {selectedIPhone.name} dengan tawaran eksklusif untuk anda!
-                (Tambahkan butiran harga, pelan, dll. di sini)
-              </p>
-              <Button className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white">
-                Teruskan Pembelian {selectedIPhone.name}
-              </Button>
-              <Button
-                variant="outline"
-                onClick={() => setSelectedIPhone(null)}
-                className="mt-4 w-full max-w-xs"
-              >
-                Kembali ke Senarai
-              </Button>
-            </div>
-          ) : (
-            <>
-              {/* Empat kotak peranti statik telah dipadamkan di sini */}
-              <IPhonePromoCards onSelectIPhone={handleSelectIPhone} />
-            </>
-          )}
+          {renderDialogContent()}
         </DialogContent>
       </Dialog>
     </div>

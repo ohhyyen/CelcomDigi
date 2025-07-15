@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import IPhonePromoCards from './IPhonePromoCards'; // Mengemas kini import
+import IPhonePromoCards from './IPhonePromoCards'; // Import yang betul
 import {
   Dialog,
   DialogContent,

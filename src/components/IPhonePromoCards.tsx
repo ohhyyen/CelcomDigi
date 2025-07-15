@@ -3,11 +3,11 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
-interface iPhonePromotionListProps {
+interface IPhonePromoCardsProps {
   onSelectIPhone: (iphone: { name: string; image: string; }) => void;
 }
 
-const iPhonePromotionList: React.FC<iPhonePromotionListProps> = ({ onSelectIPhone }) => {
+const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone }) => {
   const iPhones = [
     { name: 'iPhone 16 Pro Max', image: 'https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif' },
     { name: 'iPhone 16 Pro', image: 'https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee428f6c2ccb7da97d60_CelcomDigi_iPhone-16-Pro-Max_Device-Image.avif' },
@@ -33,4 +33,4 @@ const iPhonePromotionList: React.FC<iPhonePromotionListProps> = ({ onSelectIPhon
   );
 };
 
-export default iPhonePromotionList;
+export default IPhonePromoCards;

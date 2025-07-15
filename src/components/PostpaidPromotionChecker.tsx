@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import { iPhonePromotionList } from './iPhonePromotionList'; // Mengemas kini import
+import IPhonePromoCards from './IPhonePromoCards'; // Mengemas kini import
 import {
   Dialog,
   DialogContent,
@@ -130,7 +130,7 @@ const PostpaidPromotionChecker: React.FC = () => {
                   <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
                 </div>
               </div>
-              <iPhonePromotionList onSelectIPhone={handleSelectIPhone} />
+              <IPhonePromoCards onSelectIPhone={handleSelectIPhone} />
             </>
           )}
         </DialogContent>

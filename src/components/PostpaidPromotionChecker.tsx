@@ -87,11 +87,11 @@ const PostpaidPromotionChecker: React.FC = () => {
               ) : (
                 <>
                   Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
-                  <div className="flex justify-center space-x-2 mt-4">
-                    <div className="w-6 h-6 bg-blue-500 rounded-sm"></div>
-                    <div className="w-6 h-6 bg-green-500 rounded-sm"></div>
-                    <div className="w-6 h-6 bg-red-500 rounded-sm"></div>
-                    <div className="w-6 h-6 bg-purple-500 rounded-sm"></div>
+                  <div className="grid grid-cols-4 gap-4 mt-4 w-full">
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex items-center justify-center"></div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex items-center justify-center"></div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex items-center justify-center"></div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm h-24 flex items-center justify-center"></div>
                   </div>
                 </>
               )}

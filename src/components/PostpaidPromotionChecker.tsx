@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { showSuccess, showError } from '@/utils/toast';
-import iPhonePromotionList from './iPhonePromotionList';
+import iPhonePromotionList from './iPhonePromotionList'; // Ensure this import is correctly recognized
 import {
   Dialog,
   DialogContent,
@@ -12,6 +12,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+
+// This comment is added to trigger a re-compilation and resolve potential TypeScript caching issues.
 
 const PostpaidPromotionChecker: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
@@ -85,7 +87,29 @@ const PostpaidPromotionChecker: React.FC = () => {
               {selectedIPhone ? (
                 `Ini adalah butiran untuk ${selectedIPhone.name}.`
               ) : (
-                `Tahniah untuk nombor ${phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.`
+                <>
+                  Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
+                  <div className="grid grid-cols-4 gap-4 mt-4 w-full">
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-between">
+                      <img src="/4023441_1.jpg" alt="iPhone 16 Pro Max" className="w-24 h-24 object-contain mb-2" />
+                      <p className="text-base font-semibold text-gray-800 text-center">IPHONE 16 Pro Max</p>
+                      <p className="text-sm font-light text-gray-600 text-center">(RM600)</p>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto mt-auto">Beli sekarang</Button>
+                    </div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
+                      <p className="text-sm mb-2">Peranti 2</p>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
+                    </div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
+                      <p className="text-sm mb-2">Peranti 3</p>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
+                    </div>
+                    <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
+                      <p className="text-sm mb-2">Peranti 4</p>
+                      <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
+                    </div>
+                  </div>
+                </>
               )}
             </DialogDescription>
           </DialogHeader>
@@ -109,29 +133,7 @@ const PostpaidPromotionChecker: React.FC = () => {
               </Button>
             </div>
           ) : (
-            <>
-              <div className="grid grid-cols-4 gap-4 mt-4 w-full">
-                <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-between">
-                  <img src="/4023441_1.jpg" alt="iPhone 16 Pro Max" className="w-24 h-24 object-contain mb-2" />
-                  <p className="text-base font-semibold text-gray-800 text-center">IPHONE 16 Pro Max</p>
-                  <p className="text-sm font-light text-gray-600 text-center">(RM600)</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto mt-auto">Beli sekarang</Button>
-                </div>
-                <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
-                  <p className="text-sm mb-2">Peranti 2</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
-                </div>
-                <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
-                  <p className="text-sm mb-2">Peranti 3</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
-                </div>
-                <div className="bg-white border border-gray-300 rounded-lg shadow-sm p-4 flex flex-col items-center justify-center">
-                  <p className="text-sm mb-2">Peranti 4</p>
-                  <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white text-xs py-1 h-auto">Beli sekarang</Button>
-                </div>
-              </div>
-              <iPhonePromotionList onSelectIPhone={handleSelectIPhone} />
-            </>
+            <iPhonePromotionList onSelectIPhone={handleSelectIPhone} />
           )}
         </DialogContent>
       </Dialog>

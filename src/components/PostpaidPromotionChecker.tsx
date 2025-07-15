@@ -85,7 +85,15 @@ const PostpaidPromotionChecker: React.FC = () => {
               {selectedIPhone ? (
                 `Ini adalah butiran untuk ${selectedIPhone.name}.`
               ) : (
-                `Tahniah untuk nombor ${phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.`
+                <>
+                  Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
+                  <div className="flex justify-center space-x-2 mt-4">
+                    <div className="w-6 h-6 bg-blue-500 rounded-sm"></div>
+                    <div className="w-6 h-6 bg-green-500 rounded-sm"></div>
+                    <div className="w-6 h-6 bg-red-500 rounded-sm"></div>
+                    <div className="w-6 h-6 bg-purple-500 rounded-sm"></div>
+                  </div>
+                </>
               )}
             </DialogDescription>
           </DialogHeader>

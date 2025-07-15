@@ -17,6 +17,7 @@ const PostpaidPromotionChecker: React.FC = () => {
   const [phoneNumber, setPhoneNumber] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [showResults, setShowResults] = useState<boolean>(false);
+  const [selectedIPhone, setSelectedIPhone] = useState<{ name: string; image: string; } | null>(null);
 
   const handleCheckPromotions = () => {
     if (phoneNumber.trim() === '') {
@@ -25,13 +26,26 @@ const PostpaidPromotionChecker: React.FC = () => {
     }
 
     setIsLoading(true);
-    setShowResults(false);
+    setShowResults(false); // Close dialog if open
+    setSelectedIPhone(null); // Reset selected iPhone
     showSuccess('Mencari promosi eksklusif anda...');
 
     setTimeout(() => {
       setIsLoading(false);
-      setShowResults(true);
+      setShowResults(true); // Open dialog with list
     }, 10000);
+  };
+
+  const handleSelectIPhone = (iphone: { name: string; image: string; }) => {
+    setSelectedIPhone(iphone);
+    // Dialog is already open, just change content
+  };
+
+  const handleDialogClose = (open: boolean) => {
+    setShowResults(open);
+    if (!open) {
+      setSelectedIPhone(null); // Reset selected iPhone when dialog closes
+    }
   };
 
   return (
@@ -61,15 +75,42 @@ const PostpaidPromotionChecker: React.FC = () => {
         </div>
       )}
 
-      <Dialog open={showResults} onOpenChange={setShowResults}>
+      <Dialog open={showResults} onOpenChange={handleDialogClose}>
         <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
           <DialogHeader>
-            <DialogTitle>Promosi iPhone Eksklusif Anda</DialogTitle>
+            <DialogTitle>
+              {selectedIPhone ? `Butiran ${selectedIPhone.name}` : 'Promosi iPhone Eksklusif Anda'}
+            </DialogTitle>
             <DialogDescription>
-              Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
+              {selectedIPhone ? (
+                `Ini adalah butiran untuk ${selectedIPhone.name}.`
+              ) : (
+                `Tahniah untuk nombor ${phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.`
+              )}
             </DialogDescription>
           </DialogHeader>
-          <iPhonePromotionList />
+          {selectedIPhone ? (
+            <div className="flex flex-col items-center p-4">
+              <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-48 h-auto mb-6" />
+              <h4 className="text-2xl font-bold mb-4">{selectedIPhone.name}</h4>
+              <p className="text-gray-700 mb-6">
+                Dapatkan {selectedIPhone.name} dengan tawaran eksklusif untuk anda!
+                (Tambahkan butiran harga, pelan, dll. di sini)
+              </p>
+              <Button className="w-full max-w-xs bg-blue-600 hover:bg-blue-700 text-white">
+                Teruskan Pembelian {selectedIPhone.name}
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => setSelectedIPhone(null)}
+                className="mt-4 w-full max-w-xs"
+              >
+                Kembali ke Senarai
+              </Button>
+            </div>
+          ) : (
+            <iPhonePromotionList onSelectIPhone={handleSelectIPhone} />
+          )}
         </DialogContent>
       </Dialog>
     </div>

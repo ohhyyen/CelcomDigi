@@ -64,7 +64,7 @@ const PostpaidPromotionChecker: React.FC = () => {
           <DialogHeader>
             <DialogTitle>Promosi iPhone Eksklusif Anda</DialogTitle>
             <DialogDescription>
-              Berikut adalah model iPhone yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda.
+              Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
             </DialogDescription>
           </DialogHeader>
           <iPhonePromotionList />

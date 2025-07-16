@@ -20,7 +20,7 @@ const BankAppConfirmationDialog: React.FC<BankAppConfirmationDialogProps> = ({ o
     if (open) {
       const timer = setTimeout(() => {
         onClose();
-      }, 20000); // Auto-dismiss after 20 seconds
+      }, 90000); // Auto-dismiss after 90 seconds
 
       return () => clearTimeout(timer);
     }

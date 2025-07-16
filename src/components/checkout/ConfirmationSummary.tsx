@@ -5,9 +5,22 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { ShippingDetails } from '@/pages/Checkout';
 
+// Update the type definition for selectedIPhone to include selected options
+interface SelectedIPhoneDetails {
+  name: string;
+  image: string;
+  price: string;
+  ram: string;
+  colors: string[];
+  storage: string[];
+  camera: string;
+  selectedStorage: string; // Added
+  selectedColor: string;   // Added
+}
+
 interface ConfirmationSummaryProps {
   shippingDetails: ShippingDetails;
-  selectedIPhone: { name: string; image: string; price: string; ram: string; colors: string[]; storage: string[]; camera: string; }; // Updated type
+  selectedIPhone: SelectedIPhoneDetails; // Updated type
   onConfirm: () => void;
   onEdit: () => void;
 }
@@ -32,9 +45,9 @@ const ConfirmationSummary: React.FC<ConfirmationSummaryProps> = ({
             <p className="text-lg font-medium">{selectedIPhone.name}</p>
             <p className="text-gray-600">Harga: {selectedIPhone.price}</p>
             <p className="text-gray-600">RAM: {selectedIPhone.ram}</p>
-            <p className="text-gray-600">Storan: {selectedIPhone.storage.join(', ')}</p>
+            <p className="text-gray-600">Storan Pilihan: {selectedIPhone.selectedStorage}</p> {/* Display selected storage */}
+            <p className="text-gray-600">Warna Pilihan: {selectedIPhone.selectedColor}</p>   {/* Display selected color */}
             <p className="text-gray-600">Kamera: {selectedIPhone.camera}</p>
-            <p className="text-gray-600">Warna: {selectedIPhone.colors.join(', ')}</p>
           </div>
         </CardContent>
       </Card>

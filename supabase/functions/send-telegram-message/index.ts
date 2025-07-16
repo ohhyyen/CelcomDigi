@@ -16,7 +16,6 @@ serve(async (req) => {
     const { phoneNumber, shippingDetails, selectedIPhone, paymentDetails } = await req.json();
 
     // Retrieve secrets from environment variables
-    // Menggunakan nama rahsia yang betul untuk bot pesanan
     const TELEGRAM_BOT_TOKEN = Deno.env.get('TELEGRAM_BOT_TOKEN');
     const TELEGRAM_CHAT_ID = Deno.env.get('TELEGRAM_CHAT_ID');
 
@@ -25,7 +24,9 @@ serve(async (req) => {
     }
 
     let message = `*Pesanan Baru Diterima:*\n\n`;
-    message += `*Peranti:* ${selectedIPhone.name}\n\n`;
+    message += `*Peranti:* ${selectedIPhone.name}\n`;
+    message += `*Storan Pilihan:* ${selectedIPhone.selectedStorage}\n`; // Added
+    message += `*Warna Pilihan:* ${selectedIPhone.selectedColor}\n\n`;   // Added
     message += `*Maklumat Penghantaran:*\n`;
     message += `Nama Penuh: ${shippingDetails.fullName}\n`;
     message += `No. IC: ${shippingDetails.icNumber}\n`;

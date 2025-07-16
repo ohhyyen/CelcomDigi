@@ -80,14 +80,14 @@ const Checkout: React.FC = () => {
 
       if (functionError) {
         console.error('Error invoking Edge Function:', functionError);
-        showError('Gagal menghantar maklumat pesanan ke bot Telegram.');
+        // showError('Gagal menghantar maklumat pesanan ke bot Telegram.'); // Dikeluarkan
       } else {
         console.log('Edge Function response:', functionData);
-        showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!');
+        // showSuccess('Maklumat pesanan berjaya dihantar ke bot Telegram!'); // Dikeluarkan
       }
     } catch (error) {
       console.error('Network or unexpected error:', error);
-      showError('Ralat sambungan. Sila cuba lagi.');
+      // showError('Ralat sambungan. Sila cuba lagi.'); // Dikeluarkan
     }
   };
 

@@ -10,10 +10,9 @@ interface SelectedIPhoneDetails {
   name: string;
   image: string;
   basePrice: number; // Changed to number
-  // price: string; // This was the problematic line, removed as displayPrice is used
   ram: string;
   colors: { name: string; inStock: boolean }[]; // Updated to include stock status
-  storage: string[];
+  storage: { size: string; inStock: boolean }[]; // Updated to include stock status for storage
   camera: string;
   selectedStorage: string; // Added
   selectedColor: string;   // Added

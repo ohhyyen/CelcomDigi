@@ -30,7 +30,7 @@ type SelectedIPhoneDetails = {
   basePrice: number; // Changed to number
   ram: string;
   colors: { name: string; inStock: boolean }[]; // Updated to include stock status
-  storage: string[];
+  storage: { size: string; inStock: boolean }[]; // Updated to include stock status for storage
   camera: string;
   selectedStorage: string; // Added
   selectedColor: string;   // Added
@@ -83,7 +83,7 @@ const Checkout: React.FC = () => {
             basePrice: selectedIPhone.basePrice, // Pass basePrice
             ram: selectedIPhone.ram,
             colors: selectedIPhone.colors,
-            storage: selectedIPhone.storage,
+            storage: selectedIPhone.storage, // Pass the full storage array
             camera: selectedIPhone.camera,
             selectedStorage: selectedIPhone.selectedStorage,
             selectedColor: selectedIPhone.selectedColor,

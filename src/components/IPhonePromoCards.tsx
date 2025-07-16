@@ -17,7 +17,7 @@ interface IPhoneDetails {
   basePrice: number; // Base price in number
   ram: string;
   colors: { name: string; inStock: boolean }[]; // Updated to include stock status
-  storage: string[];
+  storage: { size: string; inStock: boolean }[]; // Updated to include stock status for storage
   camera: string;
 }
 
@@ -46,7 +46,11 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
         { name: 'Titanium Biru', inStock: false }, // Example: Out of stock
         { name: 'Titanium Semulajadi', inStock: true },
       ],
-      storage: ['256GB', '512GB', '1TB'],
+      storage: [
+        { size: '256GB', inStock: true },
+        { size: '512GB', inStock: true },
+        { size: '1TB', inStock: false }, // Out of stock
+      ],
       camera: '48MP Utama, 12MP Ultra Lebar, 12MP Telefoto'
     },
     {
@@ -60,7 +64,12 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
         { name: 'Titanium Biru', inStock: true },
         { name: 'Titanium Semulajadi', inStock: false }, // Example: Out of stock
       ],
-      storage: ['128GB', '256GB', '512GB', '1TB'],
+      storage: [
+        { size: '128GB', inStock: true },
+        { size: '256GB', inStock: true },
+        { size: '512GB', inStock: true },
+        { size: '1TB', inStock: false }, // Out of stock
+      ],
       camera: '48MP Utama, 12MP Ultra Lebar, 12MP Telefoto'
     },
     {
@@ -75,7 +84,11 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
         { name: 'Hijau', inStock: true },
         { name: 'Hitam', inStock: true },
       ],
-      storage: ['128GB', '256GB', '512GB'],
+      storage: [
+        { size: '128GB', inStock: true },
+        { size: '256GB', inStock: true },
+        { size: '512GB', inStock: true },
+      ],
       camera: '48MP Utama, 12MP Ultra Lebar'
     },
     {
@@ -90,7 +103,11 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
         { name: 'Hijau', inStock: true },
         { name: 'Hitam', inStock: true },
       ],
-      storage: ['64GB', '128GB', '256GB'],
+      storage: [
+        { size: '64GB', inStock: true },
+        { size: '128GB', inStock: true },
+        { size: '256GB', inStock: true },
+      ],
       camera: '12MP Utama, 12MP Ultra Lebar'
     },
   ];
@@ -98,14 +115,17 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
       {iPhones.map((iphone, index) => {
-        const [selectedStorage, setSelectedStorage] = useState<string>(iphone.storage[0]);
+        const [selectedStorage, setSelectedStorage] = useState<string>(
+          iphone.storage.find(s => s.inStock)?.size || '' // Select first in-stock storage
+        );
         const [selectedColor, setSelectedColor] = useState<string>(
           iphone.colors.find(c => c.inStock)?.name || '' // Select first in-stock color
         );
         const [calculatedPrice, setCalculatedPrice] = useState<number>(iphone.basePrice);
 
         useEffect(() => {
-          const storageIndex = iphone.storage.indexOf(selectedStorage);
+          const storageSizes = iphone.storage.map(s => s.size);
+          const storageIndex = storageSizes.indexOf(selectedStorage);
           let priceAdjustment = 0;
           if (storageIndex === 1) {
             priceAdjustment = 100;
@@ -158,8 +178,12 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
                       storagePriceText = ' (+RM200)';
                     }
                     return (
-                      <SelectItem key={storageOption} value={storageOption}>
-                        {storageOption}{storagePriceText}
+                      <SelectItem
+                        key={storageOption.size}
+                        value={storageOption.size}
+                        disabled={!storageOption.inStock}
+                      >
+                        {storageOption.size}{storagePriceText} {!storageOption.inStock && '(Kehabisan Stok)'}
                       </SelectItem>
                     );
                   })}

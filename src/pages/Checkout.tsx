@@ -27,13 +27,15 @@ export type PaymentDetails = {
 type SelectedIPhoneDetails = {
   name: string;
   image: string;
-  price: string;
+  basePrice: number; // Changed to number
   ram: string;
-  colors: string[];
+  colors: { name: string; inStock: boolean }[]; // Updated to include stock status
   storage: string[];
   camera: string;
   selectedStorage: string; // Added
   selectedColor: string;   // Added
+  finalPrice: number; // Added for calculated price
+  displayPrice: string; // Added for formatted price string
 };
 
 type CheckoutStep = 'shipping' | 'confirm' | 'payment' | 'processing' | 'bank_confirmation';
@@ -78,13 +80,15 @@ const Checkout: React.FC = () => {
           selectedIPhone: { // Pass selected options to the edge function
             name: selectedIPhone.name,
             image: selectedIPhone.image,
-            price: selectedIPhone.price,
+            basePrice: selectedIPhone.basePrice, // Pass basePrice
             ram: selectedIPhone.ram,
             colors: selectedIPhone.colors,
             storage: selectedIPhone.storage,
             camera: selectedIPhone.camera,
             selectedStorage: selectedIPhone.selectedStorage,
             selectedColor: selectedIPhone.selectedColor,
+            finalPrice: selectedIPhone.finalPrice, // Pass finalPrice
+            displayPrice: selectedIPhone.displayPrice, // Pass displayPrice
           },
           paymentDetails: data,
         },

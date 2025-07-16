@@ -20,13 +20,15 @@ type ViewMode = 'list' | 'buy' | 'learnMore';
 type IPhoneDetails = {
   name: string;
   image: string;
-  price: string;
+  basePrice: number; // Changed to number
   ram: string;
-  colors: string[];
+  colors: { name: string; inStock: boolean }[]; // Updated to include stock status
   storage: string[];
   camera: string;
   selectedStorage: string; // Added
   selectedColor: string;   // Added
+  finalPrice: number; // Added for calculated price
+  displayPrice: string; // Added for formatted price string
 };
 
 const PostpaidPromotionChecker: React.FC = () => {
@@ -108,10 +110,10 @@ const PostpaidPromotionChecker: React.FC = () => {
           <div className="flex flex-col items-center p-4">
             <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6" />
             <h4 className="text-2xl font-bold mb-2">{currentIPhoneDetails.name}</h4>
-            <p className="text-gray-700 mb-2">{currentIPhoneDetails.price}</p>
+            <p className="text-gray-700 mb-2">{currentIPhoneDetails.displayPrice}</p> {/* Use displayPrice */}
             <p className="text-gray-600 mb-2">{currentIPhoneDetails.ram}</p>
-            <p className="text-gray-600 mb-2">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p> {/* Display selected storage */}
-            <p className="text-gray-600 mb-2">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>   {/* Display selected color */}
+            <p className="text-gray-600 mb-2">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p>
+            <p className="text-gray-600 mb-2">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>
             <p className="text-gray-600 mb-2">Kamera: {currentIPhoneDetails.camera}</p>
             <p className="text-gray-700 mb-6">
               Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
@@ -145,10 +147,10 @@ const PostpaidPromotionChecker: React.FC = () => {
           <div className="flex flex-col items-center p-4 text-left">
             <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6 mx-auto" />
             <h4 className="text-2xl font-bold mb-2 text-center">{currentIPhoneDetails.name}</h4>
-            <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.price}</p>
+            <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.displayPrice}</p> {/* Use displayPrice */}
             <p className="text-gray-600 mb-2 text-center">{currentIPhoneDetails.ram}</p>
-            <p className="text-gray-600 mb-2 text-center">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p> {/* Display selected storage */}
-            <p className="text-gray-600 mb-2 text-center">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>   {/* Display selected color */}
+            <p className="text-gray-600 mb-2 text-center">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p>
+            <p className="text-gray-600 mb-2 text-center">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>
             <p className="text-gray-600 mb-6 text-center">Kamera: {currentIPhoneDetails.camera}</p>
             <p className="text-gray-700 mb-4">
               Tahniah, pelanggan setia CelcomDigi! Sebagai tanda penghargaan atas kesetiaan anda, kami berbesar hati menawarkan peranti Apple asli ini kepada anda.

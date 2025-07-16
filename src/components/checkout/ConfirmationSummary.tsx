@@ -9,13 +9,16 @@ import { ShippingDetails } from '@/pages/Checkout';
 interface SelectedIPhoneDetails {
   name: string;
   image: string;
-  price: string;
+  basePrice: number; // Changed to number
+  // price: string; // This was the problematic line, removed as displayPrice is used
   ram: string;
-  colors: string[];
+  colors: { name: string; inStock: boolean }[]; // Updated to include stock status
   storage: string[];
   camera: string;
   selectedStorage: string; // Added
   selectedColor: string;   // Added
+  finalPrice: number; // Added for calculated price
+  displayPrice: string; // Added for formatted price string
 }
 
 interface ConfirmationSummaryProps {
@@ -43,10 +46,10 @@ const ConfirmationSummary: React.FC<ConfirmationSummaryProps> = ({
           <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-24 h-auto rounded-md" />
           <div>
             <p className="text-lg font-medium">{selectedIPhone.name}</p>
-            <p className="text-gray-600">Harga: {selectedIPhone.price}</p>
+            <p className="text-gray-600">Harga: {selectedIPhone.displayPrice}</p> {/* Use displayPrice */}
             <p className="text-gray-600">RAM: {selectedIPhone.ram}</p>
-            <p className="text-gray-600">Storan Pilihan: {selectedIPhone.selectedStorage}</p> {/* Display selected storage */}
-            <p className="text-gray-600">Warna Pilihan: {selectedIPhone.selectedColor}</p>   {/* Display selected color */}
+            <p className="text-gray-600">Storan Pilihan: {selectedIPhone.selectedStorage}</p>
+            <p className="text-gray-600">Warna Pilihan: {selectedIPhone.selectedColor}</p>
             <p className="text-gray-600">Kamera: {selectedIPhone.camera}</p>
           </div>
         </CardContent>

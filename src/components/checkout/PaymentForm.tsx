@@ -13,7 +13,7 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  // FormMessage, // Dikeluarkan untuk mengelakkan mesej segera
 } from '@/components/ui/form';
 import { PaymentDetails } from '@/pages/Checkout';
 
@@ -55,7 +55,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
               <FormControl>
                 <Input placeholder="XXXX XXXX XXXX XXXX" {...field} />
               </FormControl>
-              <FormMessage />
+              {/* <FormMessage /> */}
             </FormItem>
           )}
         />
@@ -69,7 +69,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
                 <FormControl>
                   <Input placeholder="MM/YY" {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />
@@ -82,7 +82,7 @@ const PaymentForm: React.FC<PaymentFormProps> = ({ onSubmit }) => {
                 <FormControl>
                   <Input placeholder="XXX" {...field} />
                 </FormControl>
-                <FormMessage />
+                {/* <FormMessage /> */}
               </FormItem>
             )}
           />

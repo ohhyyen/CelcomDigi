@@ -42,9 +42,9 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
       ram: '8GB RAM',
       colors: [
         { name: 'Titanium Hitam', inStock: true },
-        { name: 'Titanium Putih', inStock: true },
-        { name: 'Titanium Biru', inStock: false }, // Example: Out of stock
-        { name: 'Titanium Semulajadi', inStock: true },
+        { name: 'Titanium Putih', inStock: false }, // Kehabisan Stok
+        { name: 'Titanium Biru', inStock: false }, // Kehabisan Stok
+        { name: 'Titanium Semulajadi', inStock: false }, // Kehabisan Stok
       ],
       storage: [
         { size: '256GB', inStock: true },
@@ -60,9 +60,9 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
       ram: '8GB RAM',
       colors: [
         { name: 'Titanium Hitam', inStock: true },
-        { name: 'Titanium Putih', inStock: true },
-        { name: 'Titanium Biru', inStock: true },
-        { name: 'Titanium Semulajadi', inStock: false }, // Example: Out of stock
+        { name: 'Titanium Putih', inStock: false }, // Kehabisan Stok
+        { name: 'Titanium Biru', inStock: false }, // Kehabisan Stok
+        { name: 'Titanium Semulajadi', inStock: false }, // Kehabisan Stok
       ],
       storage: [
         { size: '128GB', inStock: true },
@@ -79,10 +79,10 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
       ram: '6GB RAM',
       colors: [
         { name: 'Biru', inStock: true },
-        { name: 'Merah Jambu', inStock: true },
-        { name: 'Kuning', inStock: false }, // Example: Out of stock
-        { name: 'Hijau', inStock: true },
-        { name: 'Hitam', inStock: true },
+        { name: 'Merah Jambu', inStock: false }, // Kehabisan Stok
+        { name: 'Kuning', inStock: false }, // Kehabisan Stok
+        { name: 'Hijau', inStock: false }, // Kehabisan Stok
+        { name: 'Hitam', inStock: false }, // Kehabisan Stok
       ],
       storage: [
         { size: '128GB', inStock: true },
@@ -98,10 +98,10 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
       ram: '6GB RAM',
       colors: [
         { name: 'Biru', inStock: true },
-        { name: 'Merah Jambu', inStock: false }, // Example: Out of stock
-        { name: 'Kuning', inStock: true },
-        { name: 'Hijau', inStock: true },
-        { name: 'Hitam', inStock: true },
+        { name: 'Merah Jambu', inStock: false }, // Kehabisan Stok
+        { name: 'Kuning', inStock: false }, // Kehabisan Stok
+        { name: 'Hijau', inStock: false }, // Kehabisan Stok
+        { name: 'Hitam', inStock: false }, // Kehabisan Stok
       ],
       storage: [
         { size: '64GB', inStock: true },

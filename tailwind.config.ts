@@ -62,6 +62,9 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        // Custom CelcomDigi Colors
+        "celcomdigi-dark-blue": "hsl(var(--celcomdigi-dark-blue))",
+        "celcomdigi-light-blue": "hsl(var(--celcomdigi-light-blue))",
       },
       borderRadius: {
         lg: "var(--radius)",

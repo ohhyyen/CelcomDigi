@@ -3,6 +3,13 @@
 import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils'; // Import cn for conditional styling
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select"; // Import Select components
 
 interface IPhoneDetails {
   name: string;
@@ -87,46 +94,38 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
             {iphone.price && <p className="text-sm text-gray-600 mb-2">{iphone.price}</p>}
             <p className="text-sm text-gray-500 mb-1">{iphone.ram}</p>
 
-            {/* Storage Selection */}
+            {/* Storage Selection using Select component */}
             <div className="mb-2">
               <p className="text-sm text-gray-700 font-medium mb-1">Storan:</p>
-              <div className="flex flex-wrap justify-center gap-2">
-                {iphone.storage.map((storageOption) => (
-                  <Button
-                    key={storageOption}
-                    variant={selectedStorage === storageOption ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setSelectedStorage(storageOption)}
-                    className={cn(
-                      "px-3 py-1 rounded-md text-xs",
-                      selectedStorage === storageOption ? "bg-blue-600 text-white hover:bg-blue-700" : "border border-gray-300 text-gray-700 hover:bg-gray-100"
-                    )}
-                  >
-                    {storageOption}
-                  </Button>
-                ))}
-              </div>
+              <Select onValueChange={setSelectedStorage} defaultValue={selectedStorage}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pilih Storan" />
+                </SelectTrigger>
+                <SelectContent>
+                  {iphone.storage.map((storageOption) => (
+                    <SelectItem key={storageOption} value={storageOption}>
+                      {storageOption}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
-            {/* Color Selection */}
+            {/* Color Selection using Select component */}
             <div className="mb-4">
               <p className="text-sm text-gray-700 font-medium mb-1">Warna:</p>
-              <div className="flex flex-wrap justify-center gap-2">
-                {iphone.colors.map((colorOption) => (
-                  <Button
-                    key={colorOption}
-                    variant={selectedColor === colorOption ? 'default' : 'outline'}
-                    size="sm"
-                    onClick={() => setSelectedColor(colorOption)}
-                    className={cn(
-                      "px-3 py-1 rounded-md text-xs",
-                      selectedColor === colorOption ? "bg-blue-600 text-white hover:bg-blue-700" : "border border-gray-300 text-gray-700 hover:bg-gray-100"
-                    )}
-                  >
-                    {colorOption}
-                  </Button>
-                ))}
-              </div>
+              <Select onValueChange={setSelectedColor} defaultValue={selectedColor}>
+                <SelectTrigger className="w-full">
+                  <SelectValue placeholder="Pilih Warna" />
+                </SelectTrigger>
+                <SelectContent>
+                  {iphone.colors.map((colorOption) => (
+                    <SelectItem key={colorOption} value={colorOption}>
+                      {colorOption}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
             </div>
 
             <p className="text-sm text-gray-500 mb-4">Kamera: {iphone.camera}</p>

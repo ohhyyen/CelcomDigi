@@ -6,7 +6,8 @@ const Navbar: React.FC = () => {
     <nav className="bg-celcomdigi-dark-blue text-white p-4 shadow-md">
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
-          <img src="/231020-celcomdigi-logo-1140x570.jpg" alt="CelcomDigi Logo" className="h-12 w-auto" /> {/* Increased height to h-12 */}
+          {/* Menggunakan imej placeholder untuk diagnosis */}
+          <img src="https://via.placeholder.com/150x50?text=Logo+Placeholder" alt="CelcomDigi Logo Placeholder" className="h-12 w-auto" />
         </Link>
         <div className="flex space-x-4">
           <Link to="/postpaid" className="hover:text-celcomdigi-light-blue">Pascabayar</Link>

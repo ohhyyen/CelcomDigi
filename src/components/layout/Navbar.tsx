@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-celcomdigi-dark-blue text-white h-20 px-4 shadow-md flex items-center"> {/* Menetapkan ketinggian tetap dan memusatkan item */}
+    <nav className="bg-celcomdigi-dark-blue text-white h-60 px-4 shadow-md flex items-center"> {/* Menetapkan ketinggian tetap yang lebih besar */}
       <div className="container mx-auto flex justify-between items-center h-full"> {/* Memastikan kontainer mengisi ketinggian nav */}
         <Link to="/" className="flex items-center h-full"> {/* Memastikan link mengisi ketinggian dan memusatkan logo */}
           {/* Laluan logo yang dikemas kini dan saiz dibesarkan */}

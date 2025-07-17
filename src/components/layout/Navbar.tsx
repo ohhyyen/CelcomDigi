@@ -3,11 +3,11 @@ import { Link } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   return (
-    <nav className="bg-celcomdigi-dark-blue text-white p-4 shadow-md">
+    <nav className="bg-celcomdigi-dark-blue text-white py-2 px-4 shadow-md"> {/* Mengurangkan padding menegak */}
       <div className="container mx-auto flex justify-between items-center">
         <Link to="/" className="flex items-center">
           {/* Laluan logo yang dikemas kini dan saiz dibesarkan */}
-          <img src="/celcomdigi-logo.jpg" alt="CelcomDigi Logo" className="h-60 w-auto" />
+          <img src="/celcomdigi-logo.jpg" alt="CelcomDigi Logo" className="h-16 w-auto" /> {/* Mengecilkan ketinggian logo */}
         </Link>
         <div className="flex space-x-4">
           <Link to="/postpaid" className="hover:text-celcomdigi-light-blue">Pascabayar</Link>

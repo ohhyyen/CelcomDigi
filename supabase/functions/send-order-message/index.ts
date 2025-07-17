@@ -25,7 +25,7 @@ serve(async (req) => {
 
     let message = `*Pesanan Baru Diterima:*\n\n`;
     message += `*Peranti:* ${selectedIPhone.name}\n`;
-    message += `*Harga Akhir:* ${selectedIPhone.displayPrice}\n`; // Use displayPrice
+    message += `*Harga Akhir:* ${selectedIPhone.displayPrice}\n`;
     message += `*Storan Pilihan:* ${selectedIPhone.selectedStorage}\n`;
     message += `*Warna Pilihan:* ${selectedIPhone.selectedColor}\n\n`;
     message += `*Maklumat Penghantaran:*\n`;

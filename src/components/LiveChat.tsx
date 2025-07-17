@@ -1,21 +1,23 @@
 "use client";
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { ScrollArea } from '@/components/ui/scroll-area';
-import { MessageSquareText, Send, Loader2 } from 'lucide-react'; // Added Loader2
+import { MessageSquareText, Send, Loader2 } from 'lucide-react';
 import { showSuccess, showError } from '@/utils/toast';
 import { supabase } from '@/integrations/supabase/client';
-import { cn } from '@/lib/utils'; // Added cn import
+import { cn } from '@/lib/utils';
+import { v4 as uuidv4 } from 'uuid'; // Import uuid
 
 interface ChatMessage {
-  id: number;
-  sender: 'user' | 'system';
-  text: string;
-  timestamp: string;
+  id: string; // Changed to string for UUID
+  session_id: string; // Added session_id
+  sender: 'user' | 'agent'; // Changed 'system' to 'agent'
+  message_text: string; // Changed 'text' to 'message_text'
+  created_at: string; // Changed 'timestamp' to 'created_at'
 }
 
 const LiveChat: React.FC = () => {
@@ -23,27 +25,80 @@ const LiveChat: React.FC = () => {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState<ChatMessage[]>([]);
   const [isSending, setIsSending] = useState(false);
+  const [sessionId, setSessionId] = useState<string | null>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
+
+  // Initialize or retrieve session ID
+  useEffect(() => {
+    let currentSessionId = localStorage.getItem('chat_session_id');
+    if (!currentSessionId) {
+      currentSessionId = uuidv4();
+      localStorage.setItem('chat_session_id', currentSessionId);
+    }
+    setSessionId(currentSessionId);
+
+    // Load existing messages for this session
+    const fetchMessages = async () => {
+      if (currentSessionId) {
+        const { data, error } = await supabase
+          .from('chat_messages')
+          .select('*')
+          .eq('session_id', currentSessionId)
+          .order('created_at', { ascending: true });
+
+        if (error) {
+          console.error('Error fetching chat history:', error);
+          showError('Gagal memuatkan sejarah sembang.');
+        } else {
+          setChatHistory(data as ChatMessage[]);
+        }
+      }
+    };
+    fetchMessages();
+  }, []);
+
+  // Scroll to bottom on new message
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [chatHistory]);
+
+  // Supabase Realtime subscription
+  useEffect(() => {
+    if (!sessionId) return;
+
+    const channel = supabase
+      .channel(`chat_session_${sessionId}`)
+      .on(
+        'postgres_changes',
+        {
+          event: 'INSERT',
+          schema: 'public',
+          table: 'chat_messages',
+          filter: `session_id=eq.${sessionId}`,
+        },
+        (payload) => {
+          const newMessage = payload.new as ChatMessage;
+          setChatHistory((prev) => [...prev, newMessage]);
+        }
+      )
+      .subscribe();
+
+    return () => {
+      supabase.removeChannel(channel);
+    };
+  }, [sessionId]);
 
   const handleSendMessage = async () => {
-    if (message.trim() === '') {
-      showError('Sila taip mesej anda.');
+    if (message.trim() === '' || !sessionId) {
+      showError('Sila taip mesej anda atau sesi tidak sah.');
       return;
     }
 
-    const newMessage: ChatMessage = {
-      id: Date.now(),
-      sender: 'user',
-      text: message.trim(),
-      timestamp: new Date().toLocaleTimeString(),
-    };
-
-    setChatHistory((prev) => [...prev, newMessage]);
-    setMessage('');
     setIsSending(true);
 
     try {
       const { data, error } = await supabase.functions.invoke('send-chat-message', {
-        body: { message: newMessage.text },
+        body: { message: message.trim(), sessionId: sessionId },
       });
 
       if (error) {
@@ -51,6 +106,8 @@ const LiveChat: React.FC = () => {
         showError('Gagal menghantar mesej. Sila cuba lagi.');
       } else {
         console.log('Edge Function response:', data);
+        // Message will be added to chatHistory via Realtime subscription
+        setMessage('');
         showSuccess('Mesej anda telah dihantar!');
       }
     } catch (networkError) {
@@ -101,14 +158,15 @@ const LiveChat: React.FC = () => {
                         : 'bg-gray-200 text-gray-800'
                     )}
                   >
-                    <p className="text-sm">{msg.text}</p>
+                    <p className="text-sm">{msg.message_text}</p>
                     <span className="block text-xs opacity-75 mt-1">
-                      {msg.timestamp}
+                      {new Date(msg.created_at).toLocaleTimeString()}
                     </span>
                   </div>
                 </div>
               ))
             )}
+            <div ref={messagesEndRef} /> {/* Scroll anchor */}
           </ScrollArea>
           <div className="p-4 border-t flex items-center space-x-2">
             <Textarea

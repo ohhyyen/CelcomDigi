@@ -73,7 +73,7 @@ const Checkout: React.FC = () => {
 
     // Invoke Supabase Edge Function to send data to Telegram
     try {
-      const { data: functionData, error: functionError } = await supabase.functions.invoke('send-telegram-message', {
+      const { data: functionData, error: functionError } = await supabase.functions.invoke('send-order-message', { // Updated function name
         body: {
           phoneNumber: shippingDetails?.phoneNumber,
           shippingDetails: shippingDetails,

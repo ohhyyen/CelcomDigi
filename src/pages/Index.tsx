@@ -2,6 +2,7 @@ import React from 'react';
 import Navbar from '../components/layout/Navbar.tsx';
 import Footer from '../components/layout/Footer.tsx';
 import AppleDevicesPage from './AppleDevices';
+import LiveChat from '../components/LiveChat.tsx'; // Import LiveChat component
 
 const Index: React.FC = () => {
   return (
@@ -11,6 +12,7 @@ const Index: React.FC = () => {
         <AppleDevicesPage />
       </main>
       <Footer />
+      <LiveChat /> {/* Add LiveChat component here */}
     </div>
   );
 };

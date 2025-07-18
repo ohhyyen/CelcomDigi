@@ -34,31 +34,31 @@ const ConfirmationSummary: React.FC<ConfirmationSummaryProps> = ({
   onEdit,
 }) => {
   return (
-    <div className="space-y-6">
-      <h2 className="text-2xl font-semibold mb-4 text-gray-700 text-center">Sahkan Butiran Anda</h2>
+    <div className="space-y-4 sm:space-y-6"> {/* Jarak responsif */}
+      <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-700 text-center">Sahkan Butiran Anda</h2> {/* Saiz teks responsif */}
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Peranti Pilihan</CardTitle>
+          <CardTitle className="text-lg sm:text-xl">Peranti Pilihan</CardTitle> {/* Saiz teks responsif */}
         </CardHeader>
-        <CardContent className="flex items-center space-x-4">
-          <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-24 h-auto rounded-md" />
-          <div>
-            <p className="text-lg font-medium">{selectedIPhone.name}</p>
-            <p className="text-gray-600">Harga: {selectedIPhone.displayPrice}</p> {/* Use displayPrice */}
-            <p className="text-gray-600">RAM: {selectedIPhone.ram}</p>
-            <p className="text-gray-600">Storan Pilihan: {selectedIPhone.selectedStorage}</p>
-            <p className="text-gray-600">Warna Pilihan: {selectedIPhone.selectedColor}</p>
-            <p className="text-gray-600">Kamera: {selectedIPhone.camera}</p>
+        <CardContent className="flex flex-col sm:flex-row items-center sm:items-start space-y-4 sm:space-y-0 sm:space-x-4"> {/* Susun atur responsif */}
+          <img src={selectedIPhone.image} alt={selectedIPhone.name} className="w-20 h-auto sm:w-24 rounded-md" /> {/* Saiz imej responsif */}
+          <div className="text-center sm:text-left"> {/* Penjajaran teks responsif */}
+            <p className="text-base sm:text-lg font-medium">{selectedIPhone.name}</p> {/* Saiz teks responsif */}
+            <p className="text-sm text-gray-600">Harga: {selectedIPhone.displayPrice}</p> {/* Saiz teks responsif */}
+            <p className="text-sm text-gray-600">RAM: {selectedIPhone.ram}</p>
+            <p className="text-sm text-gray-600">Storan Pilihan: {selectedIPhone.selectedStorage}</p>
+            <p className="text-sm text-gray-600">Warna Pilihan: {selectedIPhone.selectedColor}</p>
+            <p className="text-sm text-gray-600">Kamera: {selectedIPhone.camera}</p>
           </div>
         </CardContent>
       </Card>
 
       <Card>
         <CardHeader>
-          <CardTitle className="text-xl">Maklumat Penghantaran</CardTitle>
+          <CardTitle className="text-lg sm:text-xl">Maklumat Penghantaran</CardTitle> {/* Saiz teks responsif */}
         </CardHeader>
-        <CardContent className="space-y-2">
+        <CardContent className="space-y-2 text-sm sm:text-base"> {/* Saiz teks responsif */}
           <p><strong>Nama Penuh:</strong> {shippingDetails.fullName}</p>
           <p><strong>Nombor IC:</strong> {shippingDetails.icNumber}</p>
           <p><strong>Nombor Telefon:</strong> {shippingDetails.phoneNumber}</p>

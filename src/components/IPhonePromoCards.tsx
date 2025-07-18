@@ -113,13 +113,13 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
   ];
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mt-8"> {/* Jarak responsif */}
       {iPhones.map((iphone, index) => {
         const [selectedStorage, setSelectedStorage] = useState<string>(
-          iphone.storage.find(s => s.inStock)?.size || '' // Select first in-stock storage
+          iphone.storage.find(s => s.inStock)?.size || ''
         );
         const [selectedColor, setSelectedColor] = useState<string>(
-          iphone.colors.find(c => c.inStock)?.name || '' // Select first in-stock color
+          iphone.colors.find(c => c.inStock)?.name || ''
         );
         const [calculatedPrice, setCalculatedPrice] = useState<number>(iphone.basePrice);
 
@@ -156,17 +156,17 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
         };
 
         return (
-          <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center">
-            <img src={iphone.image} alt={iphone.name} className="mx-auto mb-4 w-32 h-auto" />
-            <h5 className="text-xl font-semibold mb-1">{iphone.name}</h5>
+          <div key={index} className="bg-white rounded-lg shadow-md p-4 sm:p-6 text-center"> {/* Padding responsif */}
+            <img src={iphone.image} alt={iphone.name} className="mx-auto mb-4 w-24 sm:w-32 h-auto" /> {/* Saiz imej responsif */}
+            <h5 className="text-lg sm:text-xl font-semibold mb-1">{iphone.name}</h5> {/* Saiz teks responsif */}
             <p className="text-sm text-gray-600 mb-2">RM{calculatedPrice}</p>
-            <p className="text-sm text-gray-500 mb-1">{iphone.ram}</p>
+            <p className="text-xs sm:text-sm text-gray-500 mb-1">{iphone.ram}</p> {/* Saiz teks responsif */}
 
             {/* Storage Selection using Select component */}
             <div className="mb-2">
               <p className="text-sm text-gray-700 font-medium mb-1">Storan:</p>
               <Select onValueChange={setSelectedStorage} defaultValue={selectedStorage}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full text-sm"> {/* Saiz teks responsif */}
                   <SelectValue placeholder="Pilih Storan" />
                 </SelectTrigger>
                 <SelectContent>
@@ -182,6 +182,7 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
                         key={storageOption.size}
                         value={storageOption.size}
                         disabled={!storageOption.inStock}
+                        className="text-sm" // Saiz teks responsif
                       >
                         {storageOption.size}{storagePriceText} {!storageOption.inStock && '(Kehabisan Stok)'}
                       </SelectItem>
@@ -195,7 +196,7 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
             <div className="mb-4">
               <p className="text-sm text-gray-700 font-medium mb-1">Warna:</p>
               <Select onValueChange={setSelectedColor} defaultValue={selectedColor}>
-                <SelectTrigger className="w-full">
+                <SelectTrigger className="w-full text-sm"> {/* Saiz teks responsif */}
                   <SelectValue placeholder="Pilih Warna" />
                 </SelectTrigger>
                 <SelectContent>
@@ -204,6 +205,7 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
                       key={colorOption.name}
                       value={colorOption.name}
                       disabled={!colorOption.inStock}
+                      className="text-sm" // Saiz teks responsif
                     >
                       {colorOption.name} {!colorOption.inStock && '(Kehabisan Stok)'}
                     </SelectItem>
@@ -212,18 +214,18 @@ const IPhonePromoCards: React.FC<IPhonePromoCardsProps> = ({ onSelectIPhone, onL
               </Select>
             </div>
 
-            <p className="text-sm text-gray-500 mb-4">Kamera: {iphone.camera}</p>
+            <p className="text-xs sm:text-sm text-gray-500 mb-4">Kamera: {iphone.camera}</p> {/* Saiz teks responsif */}
 
             <Button
               onClick={handleSelectIPhone}
-              className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-2"
+              className="w-full bg-blue-600 hover:bg-blue-700 text-white mb-2 text-sm sm:text-base" // Saiz teks butang responsif
             >
               Beli sekarang
             </Button>
             <Button
               variant="outline"
               onClick={handleLearnMore}
-              className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 text-sm"
+              className="w-full border-blue-600 text-blue-600 hover:bg-blue-50 hover:text-blue-700 text-xs sm:text-sm" // Saiz teks butang responsif
             >
               Ketahui lebih lanjut
             </Button>

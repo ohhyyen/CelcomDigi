@@ -87,8 +87,8 @@ const PostpaidPromotionChecker: React.FC = () => {
       return (
         <>
           <DialogHeader>
-            <DialogTitle>Promosi iPhone Eksklusif Anda</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-xl sm:text-2xl">Promosi iPhone Eksklusif Anda</DialogTitle> {/* Saiz teks responsif */}
+            <DialogDescription className="text-sm sm:text-base"> {/* Saiz teks responsif */}
               Tahniah untuk nombor {phoneNumber}! Ini adalah senarai peranti yang tersedia dengan tawaran harga istimewa untuk nombor pascabayar anda. Terima kasih atas kesetiaan anda bersama kami.
             </DialogDescription>
           </DialogHeader>
@@ -102,20 +102,20 @@ const PostpaidPromotionChecker: React.FC = () => {
       return (
         <>
           <DialogHeader>
-            <DialogTitle>Butiran {currentIPhoneDetails.name}</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-xl sm:text-2xl">Butiran {currentIPhoneDetails.name}</DialogTitle> {/* Saiz teks responsif */}
+            <DialogDescription className="text-sm sm:text-base"> {/* Saiz teks responsif */}
               Ini adalah butiran untuk {currentIPhoneDetails.name}.
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col items-center p-4">
-            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6" />
-            <h4 className="text-2xl font-bold mb-2">{currentIPhoneDetails.name}</h4>
-            <p className="text-gray-700 mb-2">{currentIPhoneDetails.displayPrice}</p> {/* Use displayPrice */}
+            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-32 sm:w-48 h-auto mb-6" /> {/* Saiz imej responsif */}
+            <h4 className="text-xl sm:text-2xl font-bold mb-2">{currentIPhoneDetails.name}</h4> {/* Saiz teks responsif */}
+            <p className="text-gray-700 mb-2">{currentIPhoneDetails.displayPrice}</p>
             <p className="text-gray-600 mb-2">{currentIPhoneDetails.ram}</p>
             <p className="text-gray-600 mb-2">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p>
             <p className="text-gray-600 mb-2">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>
             <p className="text-gray-600 mb-2">Kamera: {currentIPhoneDetails.camera}</p>
-            <p className="text-gray-700 mb-6">
+            <p className="text-gray-700 mb-6 text-center"> {/* Teks tengah */}
               Dapatkan {currentIPhoneDetails.name} dengan tawaran eksklusif untuk anda!
               (Tambahkan butiran harga, pelan, dll. di sini)
             </p>
@@ -139,15 +139,15 @@ const PostpaidPromotionChecker: React.FC = () => {
       return (
         <>
           <DialogHeader>
-            <DialogTitle>Mengenai Tawaran {currentIPhoneDetails.name}</DialogTitle>
-            <DialogDescription>
+            <DialogTitle className="text-xl sm:text-2xl">Mengenai Tawaran {currentIPhoneDetails.name}</DialogTitle> {/* Saiz teks responsif */}
+            <DialogDescription className="text-sm sm:text-base"> {/* Saiz teks responsif */}
               Penerangan terperinci mengenai tawaran peranti ini.
             </DialogDescription>
           </DialogHeader>
           <div className="flex flex-col items-center p-4 text-left">
-            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-48 h-auto mb-6 mx-auto" />
-            <h4 className="text-2xl font-bold mb-2 text-center">{currentIPhoneDetails.name}</h4>
-            <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.displayPrice}</p> {/* Use displayPrice */}
+            <img src={currentIPhoneDetails.image} alt={currentIPhoneDetails.name} className="w-32 sm:w-48 h-auto mb-6 mx-auto" /> {/* Saiz imej responsif */}
+            <h4 className="text-xl sm:text-2xl font-bold mb-2 text-center">{currentIPhoneDetails.name}</h4> {/* Saiz teks responsif */}
+            <p className="text-gray-700 mb-2 text-center">{currentIPhoneDetails.displayPrice}</p>
             <p className="text-gray-600 mb-2 text-center">{currentIPhoneDetails.ram}</p>
             <p className="text-gray-600 mb-2 text-center">Storan Pilihan: {currentIPhoneDetails.selectedStorage}</p>
             <p className="text-gray-600 mb-2 text-center">Warna Pilihan: {currentIPhoneDetails.selectedColor}</p>
@@ -176,9 +176,9 @@ const PostpaidPromotionChecker: React.FC = () => {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-2xl mx-auto mt-12">
-      <h3 className="text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3>
-      <p className="text-gray-600 mb-6">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p>
+    <div className="bg-white p-6 rounded-lg shadow-md text-center max-w-2xl mx-auto mt-8 md:mt-12"> {/* Padding dan margin responsif */}
+      <h3 className="text-xl md:text-2xl font-bold mb-4">Lihat Promosi Eksklusif Anda</h3> {/* Saiz teks responsif */}
+      <p className="text-gray-600 mb-6 text-sm md:text-base">Masukkan nombor telefon pascabayar CelcomDigi anda untuk melihat promosi peranti iPhone yang tersedia untuk anda.</p> {/* Saiz teks responsif */}
 
       {!isLoading && !showResultsDialog && (
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -187,9 +187,9 @@ const PostpaidPromotionChecker: React.FC = () => {
             placeholder="Contoh: 0191234567"
             value={phoneNumber}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPhoneNumber(e.target.value)}
-            className="max-w-xs mx-auto sm:mx-0"
+            className="w-full sm:max-w-xs mx-auto sm:mx-0" // Input mengambil lebar penuh pada mudah alih
           />
-          <Button onClick={handleCheckPromotions} className="bg-blue-600 hover:bg-blue-700 text-white">
+          <Button onClick={handleCheckPromotions} className="w-full sm:w-auto bg-blue-600 hover:bg-blue-700 text-white"> {/* Butang mengambil lebar penuh pada mudah alih */}
             Lihat Promosi
           </Button>
         </div>
@@ -203,7 +203,7 @@ const PostpaidPromotionChecker: React.FC = () => {
       )}
 
       <Dialog open={showResultsDialog} onOpenChange={handleDialogClose}>
-        <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto">
+        <DialogContent className="sm:max-w-[800px] max-h-[90vh] overflow-y-auto w-[95vw]"> {/* Lebar dialog responsif */}
           {renderDialogContent()}
         </DialogContent>
       </Dialog>

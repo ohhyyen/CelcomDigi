@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker'; // Import komponen baru
+import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker';
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -21,10 +21,10 @@ const AppleDevicesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-white text-gray-800 py-20 overflow-hidden">
+      <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden"> {/* Padding responsif */}
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-light mb-4">iPhone Terkini. Harga Terbaik.</h1>
-          <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
+          <h1 className="text-3xl md:text-5xl font-light mb-4">iPhone Terkini. Harga Terbaik.</h1> {/* Saiz teks responsif */}
+          <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p> {/* Saiz teks responsif */}
           <video
             ref={videoRef}
             className="w-full h-auto mt-8 rounded-lg shadow-lg"
@@ -36,19 +36,18 @@ const AppleDevicesPage: React.FC = () => {
             <source src="/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          {/* New Postpaid Promotion Checker Section - Moved here */}
-          <div className="mt-12"> {/* Added margin-top for spacing */}
+          <div className="mt-8 md:mt-12">
             <PostpaidPromotionChecker />
           </div>
         </div>
       </section>
 
       {/* Services Section */}
-      <section className="py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Pengalaman iPhone terbaik dengan CelcomDigi</h2>
-            <p className="text-lg text-gray-600">Temui rangkaian perkhidmatan iPhone kami yang disesuaikan untuk anda</p>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Pengalaman iPhone terbaik dengan CelcomDigi</h2> {/* Saiz teks responsif */}
+            <p className="text-base md:text-lg text-gray-600">Temui rangkaian perkhidmatan iPhone kami yang disesuaikan untuk anda</p> {/* Saiz teks responsif */}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Removed: Pelan yang dibuat untuk iPhone anda */}
@@ -60,48 +59,43 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Buy Now Section */}
-      <section id="buy-now" className="py-16 bg-gray-100">
+      <section id="buy-now" className="py-12 md:py-16 bg-gray-100"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Semak nombor pascabayar anda dan dapatkan iPhone 16 dari serendah RM400</h2>
-            {/* Removed: <p className="text-lg text-gray-600">Cara termudah untuk memiliki iPhone 16 — dari RM53/bulan dengan RM0 pendahuluan, 0% faedah</p> */}
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Semak nombor pascabayar anda dan dapatkan iPhone 16 dari serendah RM400</h2> {/* Saiz teks responsif */}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"> {/* Grid responsif */}
             {/* Device Card 1 */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif" alt="iPhone 16 Pro Max" className="mx-auto mb-4 w-48 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif" alt="iPhone 16 Pro Max" className="mx-auto mb-4 w-32 sm:w-48 h-auto" /> {/* Saiz imej responsif */}
               <h5 className="text-xl font-semibold mb-1">iPhone 16 Pro Max</h5>
-              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
             {/* Device Card 2 */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee428f6c2ccb7da97d60_CelcomDigi_iPhone-16-Pro-Max_Device-Image.avif" alt="iPhone 16 Pro" className="mx-auto mb-4 w-48 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee428f6c2ccb7da97d60_CelcomDigi_iPhone-16-Pro-Max_Device-Image.avif" alt="iPhone 16 Pro" className="mx-auto mb-4 w-32 sm:w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16 Pro</h5>
-              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
             {/* Device Card 3 */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e2613e9aff0f9a20c4ca03_CelcomDigi_iPhone-16-Pink_Device-Image.avif" alt="iPhone 16" className="mx-auto mb-4 w-48 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e2613e9aff0f9a20c4ca03_CelcomDigi_iPhone-16-Pink_Device-Image.avif" alt="iPhone 16" className="mx-auto mb-4 w-32 sm:w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16</h5>
-              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
 
             {/* Device Card 4 */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67bfeb741c4477ee5c1a6f7a_CelcomDigi_iPhone16e_device_image.avif" alt="iPhone 16e" className="mx-auto mb-4 w-48 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67bfeb741c4477ee5c1a6f7a_CelcomDigi_iPhone16e_device_image.avif" alt="iPhone 16e" className="mx-auto mb-4 w-32 sm:w-48 h-auto" />
               <h5 className="text-xl font-semibold mb-1">iPhone 16e</h5>
-              {/* Removed RRP, 24/36 bulan, and prices */}
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
           </div>
 
           <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mt-8 rounded-md flex items-center space-x-3">
-            <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e145c2fe6dccec188158eb_new-promo-icon.svg" alt="Ikon Promosi" className="w-10 h-10" />
+            <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e145c2fe6dccec188158eb_new-promo-icon.svg" alt="Ikon Promosi" className="w-8 h-8 sm:w-10 sm:h-10" /> {/* Saiz ikon responsif */}
             <div>
               <p className="text-sm">Dapatkan <strong>pengecas 35W PERCUMA &amp; baucar RM300</strong> apabila anda pra-tempah peranti iPhone 16 anda dari sekarang hingga 20 September. <a href="#" className="underline hover:text-yellow-800">Ketahui lebih lanjut di sini.</a></p>
             </div>
@@ -115,16 +109,16 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Level Up Apple Experience Section */}
-      <section className="py-16 bg-gray-200">
+      <section className="py-12 md:py-16 bg-gray-200"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Tingkatkan pengalaman Apple anda</h2>
-            <p className="text-lg text-gray-600">Dari perlindungan hingga aksesori — segala-galanya untuk menjadikan iPhone anda lebih baik</p>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Tingkatkan pengalaman Apple anda</h2> {/* Saiz teks responsif */}
+            <p className="text-base md:text-lg text-gray-600">Dari perlindungan hingga aksesori — segala-galanya untuk menjadikan iPhone anda lebih baik</p> {/* Saiz teks responsif */}
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6"> {/* Grid responsif */}
             {/* Promo Banner 1 */}
             <a href="/promotions/apple-iphone16-pwp-offer" className="block rounded-lg shadow-md overflow-hidden bg-white hover:shadow-xl transition-shadow">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66ec1b6669aeff25ffb5fd1f_CelcomDigi_PWP_Campaign%20Banner_EN_990x557.avif" alt="Pembelian dengan Pembelian" className="w-full h-48 object-cover" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66ec1b6669aeff25ffb5fd1f_CelcomDigi_PWP_Campaign%20Banner_EN_990x557.avif" alt="Pembelian dengan Pembelian" className="w-full h-32 sm:h-48 object-cover" /> {/* Ketinggian imej responsif */}
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2"><strong>Pembelian dengan Pembelian</strong></h3>
                 <p className="text-600">Jimat sehingga 45% untuk bundle aksesori siri iPhone 16</p>
@@ -132,7 +126,7 @@ const AppleDevicesPage: React.FC = () => {
             </a>
             {/* Promo Banner 2 */}
             <a href="/promotions/free-phonecare" className="block rounded-lg shadow-md overflow-hidden bg-white hover:shadow-xl transition-shadow">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310ba32c8476bbaa7f793_CelcomDigi_PromoThumbnail_iPhone16_PhoneCare_990x557_EN.avif" alt="PhoneCARE" className="w-full h-48 object-cover" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310ba32c8476bbaa7f793_CelcomDigi_PromoThumbnail_iPhone16_PhoneCare_990x557_EN.avif" alt="PhoneCARE" className="w-full h-32 sm:h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2"><strong>PhoneCARE</strong></h3>
                 <p className="text-gray-600">Tukar atau ganti iPhone terpakai anda atas sebarang sebab pada hanya RM21/bulan</p>
@@ -140,7 +134,7 @@ const AppleDevicesPage: React.FC = () => {
             </a>
             {/* Promo Banner 3 */}
             <a href="/devices/trade-in" className="block rounded-lg shadow-md overflow-hidden bg-white hover:shadow-xl transition-shadow">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310bac1a475d395575672_CelcomDigi_PromoThumbnail_iPhone16_TradeIn_990x557_EN.avif" alt="Tukar beli" className="w-full h-48 object-cover" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310bac1a475d395575672_CelcomDigi_PromoThumbnail_iPhone16_TradeIn_990x557_EN.avif" alt="Tukar beli" className="w-full h-32 sm:h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Tukar beli dengan nilai maksimum</h3>
                 <p className="text-gray-600">Dapatkan sehingga RM4,700 apabila anda tukar beli iPhone terpakai anda</p>
@@ -148,7 +142,7 @@ const AppleDevicesPage: React.FC = () => {
             </a>
             {/* Promo Banner 4 */}
             <a href="/postpaid/watchsim" className="block rounded-lg shadow-md overflow-hidden bg-white hover:shadow-xl transition-shadow">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310b96474ba64145a9d61_CelcomDigi_PromoThumbnail_iPhone16_WatchSIM_990x557_EN.avif" alt="WatchSIM" className="w-full h-48 object-cover" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e310b96474ba64145a9d61_CelcomDigi_PromoThumbnail_iPhone16_WatchSIM_990x557_EN.avif" alt="WatchSIM" className="w-full h-32 sm:h-48 object-cover" />
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">WatchSIM</h3>
                 <p className="text-gray-600">Akses sambungan tanpa tandingan untuk Apple Watch anda pada hanya RM20/bulan</p>
@@ -159,16 +153,15 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Apple Device Pricing Section (Simplified) */}
-      <section id="price-list" className="py-16 bg-white">
+      <section id="price-list" className="py-12 md:py-16 bg-white"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Harga peranti Apple</h2>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Harga peranti Apple</h2> {/* Saiz teks responsif */}
           </div>
-          {/* Simplified static device cards - original HTML had complex filtering/CMS */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid responsif */}
             {/* Example Device Card (repeated for other devices if needed) */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-32 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-24 sm:w-32 h-auto" /> {/* Saiz imej responsif */}
               <div className="text-left">
                 <div className="text-gray-500 text-sm">Apple</div>
                 <h5 className="text-lg font-semibold mb-2">iPhone 16e</h5>
@@ -190,7 +183,7 @@ const AppleDevicesPage: React.FC = () => {
             </div>
             {/* Add more static device cards here if needed, following the pattern */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-32 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-24 sm:w-32 h-auto" />
               <div className="text-left">
                 <div className="text-gray-500 text-sm">Apple</div>
                 <h5 className="text-lg font-semibold mb-2">iPhone 16e</h5>
@@ -211,7 +204,7 @@ const AppleDevicesPage: React.FC = () => {
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-32 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-24 sm:w-32 h-auto" />
               <div className="text-left">
                 <div className="text-gray-500 text-sm">Apple</div>
                 <h5 className="text-lg font-semibold mb-2">iPhone 16e</h5>
@@ -245,10 +238,10 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-16 bg-gray-100">
+      <section id="faq" className="py-12 md:py-16 bg-gray-100"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Soalan Lazim</h2>
+          <div className="text-center mb-8 md:mb-12">
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Soalan Lazim</h2> {/* Saiz teks responsif */}
           </div>
           <div className="space-y-4">
             {/* FAQ Item 1 */}

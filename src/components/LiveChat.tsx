@@ -121,24 +121,24 @@ const LiveChat: React.FC = () => {
   return (
     <>
       <Button
-        className="fixed bottom-6 right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 shadow-lg z-50"
+        className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-blue-600 hover:bg-blue-700 text-white rounded-full p-3 sm:p-4 shadow-lg z-50" // Saiz butang responsif
         size="icon"
         onClick={() => setIsOpen(true)}
       >
-        <MessageSquareText className="h-6 w-6" />
+        <MessageSquareText className="h-5 w-5 sm:h-6 sm:w-6" /> {/* Saiz ikon responsif */}
       </Button>
 
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
-        <DialogContent className="sm:max-w-[425px] p-0 flex flex-col h-[500px]">
-          <DialogHeader className="p-4 border-b">
-            <DialogTitle className="text-xl">Sembang Langsung</DialogTitle>
-            <DialogDescription>
+        <DialogContent className="sm:max-w-[425px] w-[95vw] p-0 flex flex-col h-[450px] sm:h-[500px]"> {/* Lebar dan ketinggian dialog responsif */}
+          <DialogHeader className="p-3 sm:p-4 border-b"> {/* Padding responsif */}
+            <DialogTitle className="text-lg sm:text-xl">Sembang Langsung</DialogTitle> {/* Saiz teks responsif */}
+            <DialogDescription className="text-sm">
               Hantar mesej kepada pasukan sokongan kami.
             </DialogDescription>
           </DialogHeader>
-          <ScrollArea className="flex-grow p-4 space-y-4">
+          <ScrollArea className="flex-grow p-3 sm:p-4 space-y-3 sm:space-y-4"> {/* Padding dan jarak responsif */}
             {chatHistory.length === 0 ? (
-              <div className="text-center text-gray-500 mt-10">
+              <div className="text-center text-gray-500 mt-8 sm:mt-10 text-sm"> {/* Saiz teks responsif */}
                 Tiada mesej lagi. Hantar mesej pertama anda!
               </div>
             ) : (
@@ -152,13 +152,13 @@ const LiveChat: React.FC = () => {
                 >
                   <div
                     className={cn(
-                      "max-w-[70%] p-3 rounded-lg",
+                      "max-w-[70%] p-2 sm:p-3 rounded-lg", // Padding responsif
                       msg.sender === 'user'
                         ? 'bg-blue-600 text-white'
                         : 'bg-gray-200 text-gray-800'
                     )}
                   >
-                    <p className="text-sm">{msg.message_text}</p>
+                    <p className="text-xs sm:text-sm">{msg.message_text}</p> {/* Saiz teks responsif */}
                     <span className="block text-xs opacity-75 mt-1">
                       {new Date(msg.created_at).toLocaleTimeString()}
                     </span>
@@ -168,7 +168,7 @@ const LiveChat: React.FC = () => {
             )}
             <div ref={messagesEndRef} /> {/* Scroll anchor */}
           </ScrollArea>
-          <div className="p-4 border-t flex items-center space-x-2">
+          <div className="p-3 sm:p-4 border-t flex items-center space-x-2"> {/* Padding responsif */}
             <Textarea
               placeholder="Taip mesej anda..."
               value={message}
@@ -179,10 +179,10 @@ const LiveChat: React.FC = () => {
                   handleSendMessage();
                 }
               }}
-              className="flex-grow resize-none"
+              className="flex-grow resize-none text-sm" // Saiz teks responsif
               rows={1}
             />
-            <Button onClick={handleSendMessage} disabled={isSending}>
+            <Button onClick={handleSendMessage} disabled={isSending} className="h-8 w-8 sm:h-10 sm:w-10 p-0"> {/* Saiz butang responsif */}
               {isSending ? (
                 <Loader2 className="h-4 w-4 animate-spin" />
               ) : (

@@ -42,8 +42,8 @@ const ShippingForm: React.FC<ShippingFormProps> = ({ onSubmit }) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <h2 className="text-2xl font-semibold mb-4 text-gray-700">Maklumat Penghantaran</h2>
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 sm:space-y-6"> {/* Jarak responsif */}
+        <h2 className="text-xl sm:text-2xl font-semibold mb-4 text-gray-700">Maklumat Penghantaran</h2> {/* Saiz teks responsif */}
         <FormField
           control={form.control}
           name="fullName"

@@ -1,34 +1,14 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker';
-import { Button } from '@/components/ui/button'; // Import Button component
-import { Play } from 'lucide-react'; // Import Play icon
+// Removed Button and Play icon imports as they are no longer needed for the play button fallback
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [isPlaying, setIsPlaying] = useState(true); // Assume it will autoplay initially
 
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play()
-        .then(() => {
-          console.log("Video started playing automatically.");
-          setIsPlaying(true); // Confirm playing
-        })
-        .catch(error => {
-          console.error("Video autoplay failed:", error.name, error.message);
-          console.log("Autoplay diblokir. Pengguna perlu mengklik untuk memainkan video.");
-          setIsPlaying(false); // Autoplay failed, show play button
-        });
-    }
-  }, []);
-
-  const handlePlayButtonClick = () => {
-    if (videoRef.current) {
-      videoRef.current.play();
-      setIsPlaying(true);
-    }
-  };
+  // The video will attempt to autoplay based on the attributes in the JSX
+  // Browser policies might still prevent autoplay if there's no user interaction.
+  // No specific useEffect for playing is needed here, as autoPlay attribute handles it.
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -41,27 +21,16 @@ const AppleDevicesPage: React.FC = () => {
             <video
               ref={videoRef}
               className="w-full h-auto"
-              autoPlay={isPlaying} // Control autoplay with state
+              autoPlay // Attempt to autoplay
               loop
               muted
               playsInline
-              controls={isPlaying} // Show controls only when playing or after user interaction
+              controls // Keep controls for user interaction if autoplay fails
             >
               <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
-            {!isPlaying && (
-              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                <Button
-                  onClick={handlePlayButtonClick}
-                  className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 sm:p-6"
-                  size="icon"
-                >
-                  <Play className="h-8 w-8 sm:h-10 sm:w-10" />
-                  <span className="sr-only">Mainkan Video</span>
-                </Button>
-              </div>
-            )}
+            {/* Removed conditional rendering for play button */}
           </div>
           <div className="mt-8 md:mt-12">
             <PostpaidPromotionChecker />

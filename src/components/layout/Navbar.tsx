@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
   ];
 
   return (
-    <nav className="bg-white text-gray-800 h-16 sm:h-20 px-4 shadow-md flex items-center">
+    <nav className="bg-white text-gray-800 h-16 sm:h-20 px-4 shadow-md flex items-center border-b border-gray-200"> {/* Menambah garis pemisah di sini */}
       <div className="w-full flex justify-between items-center h-full">
         <Link to="/" className="flex items-center h-full">
           <img src="/celcomdigi-logo.jpg" alt="CelcomDigi Logo" className="h-full w-auto object-contain" />
@@ -47,7 +47,7 @@ const Navbar: React.FC = () => {
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-base font-normal text-gray-700 hover:text-blue-600"
-                      onClick={() => setIsSheetOpen(false)} // Tutup sheet apabila diklik
+                      onClick={() => setIsSheetOpen(false)}
                     >
                       {link.name}
                     </a>
@@ -56,7 +56,7 @@ const Navbar: React.FC = () => {
                       key={link.name}
                       to={link.href}
                       className="text-base font-normal text-gray-700 hover:text-blue-600"
-                      onClick={() => setIsSheetOpen(false)} // Tutup sheet apabila diklik
+                      onClick={() => setIsSheetOpen(false)}
                     >
                       {link.name}
                     </Link>

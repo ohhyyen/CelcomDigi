@@ -46,8 +46,8 @@ const Navbar: React.FC = () => {
                       href={link.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm font-bold text-gray-700 hover:text-blue-600"
-                      onClick={() => setIsSheetOpen(false)}
+                      className="text-base font-normal text-gray-700 hover:text-blue-600"
+                      onClick={() => setIsSheetOpen(false)} // Tutup sheet apabila diklik
                     >
                       {link.name}
                     </a>
@@ -55,8 +55,8 @@ const Navbar: React.FC = () => {
                     <Link
                       key={link.name}
                       to={link.href}
-                      className="text-sm font-bold text-gray-700 hover:text-blue-600"
-                      onClick={() => setIsSheetOpen(false)}
+                      className="text-base font-normal text-gray-700 hover:text-blue-600"
+                      onClick={() => setIsSheetOpen(false)} // Tutup sheet apabila diklik
                     >
                       {link.name}
                     </Link>

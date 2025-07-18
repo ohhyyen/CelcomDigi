@@ -1,41 +1,68 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker';
+import { Button } from '@/components/ui/button'; // Import Button component
+import { Play } from 'lucide-react'; // Import Play icon
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [isPlaying, setIsPlaying] = useState(true); // Assume it will autoplay initially
 
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.play()
         .then(() => {
           console.log("Video started playing automatically.");
+          setIsPlaying(true); // Confirm playing
         })
         .catch(error => {
           console.error("Video autoplay failed:", error.name, error.message);
-          console.log("Kemungkinan besar, browser memblokir pemutaran otomatis karena kebijakannya atau masalah format. Interaksi pengguna mungkin diperlukan.");
+          console.log("Autoplay diblokir. Pengguna perlu mengklik untuk memainkan video.");
+          setIsPlaying(false); // Autoplay failed, show play button
         });
     }
   }, []);
+
+  const handlePlayButtonClick = () => {
+    if (videoRef.current) {
+      videoRef.current.play();
+      setIsPlaying(true);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini Dengan Harga Terbaik.</h1> {/* Teks diubah di sini */}
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini Dengan Harga Terbaik.</h1>
           <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
-          <video
-            ref={videoRef}
-            className="w-full h-auto mt-8 rounded-lg shadow-lg"
-            autoPlay
-            loop
-            muted
-            playsInline
-          >
-            <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+          <div className="relative w-full h-auto mt-8 rounded-lg shadow-lg overflow-hidden">
+            <video
+              ref={videoRef}
+              className="w-full h-auto"
+              autoPlay={isPlaying} // Control autoplay with state
+              loop
+              muted
+              playsInline
+              controls={isPlaying} // Show controls only when playing or after user interaction
+            >
+              <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+            {!isPlaying && (
+              <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-50">
+                <Button
+                  onClick={handlePlayButtonClick}
+                  className="bg-blue-600 hover:bg-blue-700 text-white rounded-full p-4 sm:p-6"
+                  size="icon"
+                >
+                  <Play className="h-8 w-8 sm:h-10 sm:w-10" />
+                  <span className="sr-only">Mainkan Video</span>
+                </Button>
+              </div>
+            )}
+          </div>
           <div className="mt-8 md:mt-12">
             <PostpaidPromotionChecker />
           </div>

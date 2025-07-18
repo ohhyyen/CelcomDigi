@@ -1,4 +1,4 @@
-/// <reference path="../../deno.d.ts" />
+/// <reference path="./deno.d.ts" />
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 
@@ -80,4 +80,7 @@ serve(async (req) => {
       status: 500,
     });
   }
+}, {
+  // This option allows the function to be called without a JWT, which is necessary for Telegram webhooks.
+  noVerifyJWT: true,
 });

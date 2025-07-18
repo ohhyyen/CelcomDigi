@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 const Navbar: React.FC = () => {
   return (
     <nav className="bg-celcomdigi-dark-blue text-white h-16 sm:h-60 px-4 shadow-md flex items-center"> {/* Menetapkan ketinggian yang lebih kecil untuk mudah alih */}
-      <div className="container mx-auto flex justify-between items-center h-full">
+      <div className="w-full flex justify-between items-center h-full"> {/* Mengeluarkan container mx-auto untuk merapatkan ke kiri */}
         <Link to="/" className="flex items-center h-full">
           <img src="/celcomdigi-logo.jpg" alt="CelcomDigi Logo" className="h-full w-auto object-contain" /> {/* Saiz logo responsif, kini akan mengisi ketinggian navbar */}
         </Link>

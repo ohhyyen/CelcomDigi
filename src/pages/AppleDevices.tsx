@@ -63,7 +63,7 @@ const AppleDevicesPage: React.FC = () => {
       <section id="buy-now" className="py-16 bg-gray-100">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4">Dapatkan pelan ansuran iPhone 16 terbaik di Malaysia dengan Easy360</h2>
+            <h2 className="text-3xl font-bold mb-4">Untuk Pelanggan Plan Pascabayar Setia Kami, Dapatkan iPhone 16 Serendah RM400 Sahaja !</h2>
             {/* Removed: <p className="text-lg text-gray-600">Cara termudah untuk memiliki iPhone 16 — dari RM53/bulan dengan RM0 pendahuluan, 0% faedah</p> */}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

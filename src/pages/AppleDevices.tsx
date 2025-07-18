@@ -23,7 +23,7 @@ const AppleDevicesPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1> {/* Saiz dan berat fon diubah di sini */}
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
           <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
           <video
             ref={videoRef}
@@ -33,7 +33,7 @@ const AppleDevicesPage: React.FC = () => {
             muted
             playsInline
           >
-            <source src="/637c596725cb8b7f82fe360b/67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
+            <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" /> {/* Laluan video diubah di sini */}
             Your browser does not support the video tag.
           </video>
           <div className="mt-8 md:mt-12">

@@ -1,37 +1,41 @@
 import React, { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import PostpaidPromotionChecker from '../components/PostpaidPromotionChecker';
-// Removed Button and Play icon imports as they are no longer needed for the play button fallback
 
 const AppleDevicesPage: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // The video will attempt to autoplay based on the attributes in the JSX
-  // Browser policies might still prevent autoplay if there's no user interaction.
-  // No specific useEffect for playing is needed here, as autoPlay attribute handles it.
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play()
+        .then(() => {
+          console.log("Video started playing automatically.");
+        })
+        .catch(error => {
+          console.error("Video autoplay failed:", error.name, error.message);
+          console.log("Kemungkinan besar, browser memblokir pemutaran otomatis karena kebijakannya atau masalah format. Interaksi pengguna mungkin diperlukan.");
+        });
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
       <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini Dengan Harga Terbaik.</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1> {/* Saiz dan berat fon diubah di sini */}
           <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
-          <div className="relative w-full h-auto mt-8 rounded-lg shadow-lg overflow-hidden">
-            <video
-              ref={videoRef}
-              className="w-full h-auto"
-              autoPlay // Attempt to autoplay
-              loop
-              muted
-              playsInline
-              controls // Keep controls for user interaction if autoplay fails
-            >
-              <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-            {/* Removed conditional rendering for play button */}
-          </div>
+          <video
+            ref={videoRef}
+            className="w-full h-auto mt-8 rounded-lg shadow-lg"
+            autoPlay
+            loop
+            muted
+            playsInline
+          >
+            <source src="/637c596725cb8b7f82fe360b/67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="mt-8 md:mt-12">
             <PostpaidPromotionChecker />
           </div>

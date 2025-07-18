@@ -23,7 +23,7 @@ const AppleDevicesPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini. Harga Terbaik.</h1>
+          <h1 className="text-2xl md:text-4xl font-bold mb-4">iPhone Terkini Dengan Harga Terbaik.</h1> {/* Teks diubah di sini */}
           <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
           <video
             ref={videoRef}
@@ -33,7 +33,7 @@ const AppleDevicesPage: React.FC = () => {
             muted
             playsInline
           >
-            <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" /> {/* Laluan video diubah di sini */}
+            <source src="/celcomdigi-iphone-promo.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="mt-8 md:mt-12">

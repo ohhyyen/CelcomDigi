@@ -108,8 +108,8 @@ const AppleDevicesPage: React.FC = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-4 mt-8">
-            <Link to="/devices/iphones-specs" className="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors text-center">Lihat spesifikasi penuh</Link>
-            <Link to="/devices/iphones-compare" className="bg-gray-200 text-gray-800 py-3 px-6 rounded-md hover:bg-gray-300 transition-colors text-center">Bandingkan model iPhone</Link>
+            <a href="https://www.celcomdigi.com/devices/iphones-specs" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white py-3 px-6 rounded-md hover:bg-blue-700 transition-colors text-center">Lihat spesifikasi penuh</a>
+            <a href="https://www.celcomdigi.com/devices/iphones-compare" target="_blank" rel="noopener noreferrer" className="bg-gray-200 text-gray-800 py-3 px-6 rounded-md hover:bg-gray-300 transition-colors text-center">Bandingkan model iPhone</a>
           </div>
         </div>
       </section>

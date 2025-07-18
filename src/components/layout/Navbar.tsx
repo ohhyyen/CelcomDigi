@@ -10,7 +10,7 @@ const Navbar: React.FC = () => {
           <img src="/celcomdigi-logo.jpg" alt="CelcomDigi Logo" className="h-full w-auto object-contain" /> {/* Logo mengisi ketinggian penuh */}
         </Link>
         <div className="flex space-x-4">
-          <Link to="/postpaid" className="hover:text-celcomdigi-light-blue">Pascabayar</Link>
+          <a href="https://www.celcomdigi.com/postpaid" target="_blank" rel="noopener noreferrer" className="hover:text-celcomdigi-light-blue">Pascabayar</a>
           <Link to="/prepaid" className="hover:text-celcomdigi-light-blue">Prabayar</Link>
           <Link to="/fibre" className="hover:text-celcomdigi-light-blue">Fiber</Link>
           <Link to="/devices/apple" className="hover:text-celcomdigi-light-blue">Peranti</Link>

@@ -21,10 +21,10 @@ const AppleDevicesPage: React.FC = () => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden">
+      <section className="relative bg-white text-gray-800 py-12 md:py-20 overflow-hidden"> {/* Padding responsif */}
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-3xl md:text-5xl font-normal mb-4">iPhone Terkini Dengan Harga Terbaik.</h1> {/* Teks dan fon diubah di sini */}
-          <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
+          <h1 className="text-3xl md:text-5xl font-light mb-4">iPhone Terkini. Harga Terbaik.</h1> {/* Saiz teks responsif */}
+          <p className="text-base md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p> {/* Saiz teks responsif */}
           <video
             ref={videoRef}
             className="w-full h-auto mt-8 rounded-lg shadow-lg"
@@ -33,7 +33,7 @@ const AppleDevicesPage: React.FC = () => {
             muted
             playsInline
           >
-            <source src="/637c596725cb8b7f82fe360b/67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
+            <source src="/637c596725cb8b7f82fe360b_67bfe8d80c908175e7bc619d_CelcomDigi_iPhone_16e_Social_Video_16x9_HD_MY-EN (1)-transcode.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div className="mt-8 md:mt-12">
@@ -43,11 +43,11 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Services Section */}
-      <section className="py-12 md:py-16 bg-white">
+      <section className="py-12 md:py-16 bg-white"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Pengalaman iPhone terbaik dengan CelcomDigi</h2>
-            <p className="text-base md:text-lg text-gray-600">Temui rangkaian perkhidmatan iPhone kami yang disesuaikan untuk anda</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Pengalaman iPhone terbaik dengan CelcomDigi</h2> {/* Saiz teks responsif */}
+            <p className="text-base md:text-lg text-gray-600">Temui rangkaian perkhidmatan iPhone kami yang disesuaikan untuk anda</p> {/* Saiz teks responsif */}
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Removed: Pelan yang dibuat untuk iPhone anda */}
@@ -59,15 +59,15 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Buy Now Section */}
-      <section id="buy-now" className="py-12 md:py-16 bg-gray-100">
+      <section id="buy-now" className="py-12 md:py-16 bg-gray-100"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Semak nombor pascabayar anda dan dapatkan iPhone 16 dari serendah RM400</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Semak nombor pascabayar anda dan dapatkan iPhone 16 dari serendah RM400</h2> {/* Saiz teks responsif */}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"> {/* Grid responsif */}
             {/* Device Card 1 */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif" alt="iPhone 16 Pro Max" className="mx-auto mb-4 w-32 sm:w-48 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66dfee42b7a243aab721a37f_CelcomDigi_iPhone-16-Pro_Device-Image.avif" alt="iPhone 16 Pro Max" className="mx-auto mb-4 w-32 sm:w-48 h-auto" /> {/* Saiz imej responsif */}
               <h5 className="text-xl font-semibold mb-1">iPhone 16 Pro Max</h5>
               <button className="mt-6 w-full bg-blue-600 text-white py-2 rounded-md hover:bg-blue-700 transition-colors">Beli sekarang</button>
             </div>
@@ -95,7 +95,7 @@ const AppleDevicesPage: React.FC = () => {
           </div>
 
           <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 mt-8 rounded-md flex items-center space-x-3">
-            <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e145c2fe6dccec188158eb_new-promo-icon.svg" alt="Ikon Promosi" className="w-8 h-8 sm:w-10 sm:h-10" />
+            <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66e145c2fe6dccec188158eb_new-promo-icon.svg" alt="Ikon Promosi" className="w-8 h-8 sm:w-10 sm:h-10" /> {/* Saiz ikon responsif */}
             <div>
               <p className="text-sm">Dapatkan <strong>pengecas 35W PERCUMA &amp; baucar RM300</strong> apabila anda pra-tempah peranti iPhone 16 anda dari sekarang hingga 20 September. <a href="#" className="underline hover:text-yellow-800">Ketahui lebih lanjut di sini.</a></p>
             </div>
@@ -109,16 +109,16 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Level Up Apple Experience Section */}
-      <section className="py-12 md:py-16 bg-gray-200">
+      <section className="py-12 md:py-16 bg-gray-200"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Tingkatkan pengalaman Apple anda</h2>
-            <p className="text-base md:text-lg text-gray-600">Dari perlindungan hingga aksesori — segala-galanya untuk menjadikan iPhone anda lebih baik</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Tingkatkan pengalaman Apple anda</h2> {/* Saiz teks responsif */}
+            <p className="text-base md:text-lg text-gray-600">Dari perlindungan hingga aksesori — segala-galanya untuk menjadikan iPhone anda lebih baik</p> {/* Saiz teks responsif */}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6"> {/* Grid responsif */}
             {/* Promo Banner 1 */}
             <a href="/promotions/apple-iphone16-pwp-offer" className="block rounded-lg shadow-md overflow-hidden bg-white hover:shadow-xl transition-shadow">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66ec1b6669aeff25ffb5fd1f_CelcomDigi_PWP_Campaign%20Banner_EN_990x557.avif" alt="Pembelian dengan Pembelian" className="w-full h-32 sm:h-48 object-cover" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/66ec1b6669aeff25ffb5fd1f_CelcomDigi_PWP_Campaign%20Banner_EN_990x557.avif" alt="Pembelian dengan Pembelian" className="w-full h-32 sm:h-48 object-cover" /> {/* Ketinggian imej responsif */}
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2"><strong>Pembelian dengan Pembelian</strong></h3>
                 <p className="text-600">Jimat sehingga 45% untuk bundle aksesori siri iPhone 16</p>
@@ -153,15 +153,15 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* Apple Device Pricing Section (Simplified) */}
-      <section id="price-list" className="py-12 md:py-16 bg-white">
+      <section id="price-list" className="py-12 md:py-16 bg-white"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Harga peranti Apple</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Harga peranti Apple</h2> {/* Saiz teks responsif */}
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"> {/* Grid responsif */}
             {/* Example Device Card (repeated for other devices if needed) */}
             <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-24 sm:w-32 h-auto" />
+              <img src="https://cdn.prod.website-files.com/637c596725cb8b7f82fe360b/67c51f946299d4c3152e155c_CelcomDigi_iPhone-e_900x900_White.avif" alt="Imej Peranti" className="mx-auto mb-4 w-24 sm:w-32 h-auto" /> {/* Saiz imej responsif */}
               <div className="text-left">
                 <div className="text-gray-500 text-sm">Apple</div>
                 <h5 className="text-lg font-semibold mb-2">iPhone 16e</h5>
@@ -238,10 +238,10 @@ const AppleDevicesPage: React.FC = () => {
       </section>
 
       {/* FAQ Section */}
-      <section id="faq" className="py-12 md:py-16 bg-gray-100">
+      <section id="faq" className="py-12 md:py-16 bg-gray-100"> {/* Padding responsif */}
         <div className="container mx-auto px-4">
           <div className="text-center mb-8 md:mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">Soalan Lazim</h2>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4">Soalan Lazim</h2> {/* Saiz teks responsif */}
           </div>
           <div className="space-y-4">
             {/* FAQ Item 1 */}

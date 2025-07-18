@@ -1,4 +1,4 @@
-/// <reference path="../../deno.d.ts" />
+/// <reference path="./deno.d.ts" />
 import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2.45.0';
 
@@ -26,19 +26,19 @@ serve(async (req) => {
 
     const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
-    // Insert message into chat_messages table
-    const { data: chatMessage, error: dbError } = await supabase
+    // Insert user message into chat_messages table
+    const { data: userChatMessage, error: dbError } = await supabase
       .from('chat_messages')
       .insert({ session_id: sessionId, sender: 'user', message_text: message })
       .select()
       .single();
 
     if (dbError) {
-      console.error('Error inserting chat message into DB:', dbError);
-      throw new Error(`Failed to save chat message: ${dbError.message}`);
+      console.error('Error inserting user chat message into DB:', dbError);
+      throw new Error(`Failed to save user chat message: ${dbError.message}`);
     }
 
-    // Send message to Telegram
+    // Send user message to Telegram (for human agent awareness)
     const telegramApiUrl = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
     const telegramMessage = `*Mesej Sembang Baru (Sesi: ${sessionId}):*\n\n${message}`;
 
@@ -57,10 +57,29 @@ serve(async (req) => {
     if (!telegramResponse.ok) {
       const errorData = await telegramResponse.json();
       console.error('Error sending chat message to Telegram:', errorData);
-      throw new Error(`Failed to send message to Telegram: ${telegramResponse.statusText}`);
+      // Do not throw error here, as we still want to send auto-reply
     }
 
-    return new Response(JSON.stringify({ message: 'Chat message sent and saved successfully!', chatMessageId: chatMessage.id }), {
+    // Generate and insert automatic reply from the AI agent
+    const autoReplyMessageText = `Hai! Terima kasih kerana menghubungi CelcomDigi. Mengenai promosi peranti iPhone kami, berikut adalah beberapa butiran penting:\n\n` +
+                                 `* Promosi ini adalah untuk nombor pascabayar yang terpilih sahaja.\n` +
+                                 `* Peranti yang ditawarkan adalah 100% original dengan jaminan selama 3 tahun.\n` +
+                                 `* Untuk nombor pascabayar yang layak, anda hanya perlu membayar harga peranti sekali sahaja, tanpa perlu melanggan pelan pascabayar baharu.\n` +
+                                 `* Promosi ini hanya boleh dituntut sekali sahaja (iaitu, 1 kad pengenalan / 1 nombor pascabayar yang layak / 1 peranti).\n\n` +
+                                 `Sila masukkan nombor telefon anda di bahagian "Lihat Promosi Eksklusif Anda" di halaman utama untuk menyemak kelayakan anda!`;
+
+    const { data: agentChatMessage, error: agentDbError } = await supabase
+      .from('chat_messages')
+      .insert({ session_id: sessionId, sender: 'agent', message_text: autoReplyMessageText })
+      .select()
+      .single();
+
+    if (agentDbError) {
+      console.error('Error inserting agent auto-reply into DB:', agentDbError);
+      // Log the error but don't block the response to the user
+    }
+
+    return new Response(JSON.stringify({ message: 'Chat message sent and auto-reply generated!', userChatMessageId: userChatMessage.id, agentChatMessageId: agentChatMessage?.id }), {
       headers: { ...corsHeaders, 'Content-Type': 'application/json' },
       status: 200,
     });

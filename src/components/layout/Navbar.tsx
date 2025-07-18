@@ -11,7 +11,7 @@ const Navbar: React.FC = () => {
         </Link>
         <div className="flex space-x-4">
           <a href="https://www.celcomdigi.com/postpaid" target="_blank" rel="noopener noreferrer" className="hover:text-celcomdigi-light-blue">Pascabayar</a>
-          <Link to="/prepaid" className="hover:text-celcomdigi-light-blue">Prabayar</Link>
+          <a href="https://www.celcomdigi.com/prepaid/nx" target="_blank" rel="noopener noreferrer" className="hover:text-celcomdigi-light-blue">Prabayar</a>
           <Link to="/fibre" className="hover:text-celcomdigi-light-blue">Fiber</Link>
           <Link to="/devices/apple" className="hover:text-celcomdigi-light-blue">Peranti</Link>
           <Link to="/lifestyle" className="hover:text-celcomdigi-light-blue">Gaya Hidup</Link>

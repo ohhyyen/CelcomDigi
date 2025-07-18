@@ -23,7 +23,7 @@ const AppleDevicesPage: React.FC = () => {
       {/* Hero Section */}
       <section className="relative bg-white text-gray-800 py-20 overflow-hidden">
         <div className="container mx-auto text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-light mb-4">iPhone Terkini. Harga Terbaik.</h1>
+          <h1 className="text-5xl md:text-6xl font-bold mb-4">Alami iPhone Terkini. Dengan Harga Paling Menarik!</h1>
           <p className="text-lg md:text-xl mb-8">Dapatkan sekarang di rangkaian terluas dan terpantas Malaysia</p>
           <video
             ref={videoRef}
